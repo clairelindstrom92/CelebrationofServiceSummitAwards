@@ -142,7 +142,7 @@ export default function Home() {
               onClick={() => scrollToSection(ticketsRef)}
               className="bg-steel-blue hover:bg-steel-blue/90 text-white font-bold py-3 px-10 rounded-lg transition transform hover:scale-105 shadow-xl uppercase tracking-wide"
             >
-              RSVP or Buy Tickets
+              Buy Tickets
             </button>
           </SectionWrapper>
         </div>
@@ -255,7 +255,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
               {[
                 { tier: "Commander-in-Chief", amount: "$25,000", benefits: ["Title recognition", "Remarks", "Premier logo placement"] },
-                { tier: "General's Circle", amount: "$15,000", benefits: ["On-stage recognition", "Media inclusion"] },
+                { tier: "General's Circle", amount: "$15,000", benefits: ["On-stage recognition and inclusion in media materials"] },
                 { tier: "Distinguished Partner", amount: "$10,000", benefits: ["Logo on collateral", "VIP access"] },
                 { tier: "Legacy Supporter", amount: "$5,000", benefits: ["Table sponsorship", "Program acknowledgment"] }
               ].map((sponsor, idx) => (
@@ -316,7 +316,7 @@ export default function Home() {
                 href="mailto:inclusivesecuritycollectiveinitiative@isciaccess.org?subject=Reception Circle Inquiry"
                 className="inline-block bg-steel-blue hover:bg-steel-blue/90 text-white font-bold py-4 px-12 rounded-lg transition transform hover:scale-105 shadow-xl uppercase tracking-wide"
               >
-                Join the Reception Circle
+                Become a Partner
               </a>
             </div>
           </SectionWrapper>
@@ -330,12 +330,10 @@ export default function Home() {
             <h2 className="text-5xl md:text-6xl font-heading font-bold text-center mb-16 text-navy tracking-tight">Past Events & Highlights</h2>
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {[
-                { title: "2024 Salute to Service", year: "2024" },
-                { title: "2023 Leadership Reception", year: "2023" },
-                { title: "Celebration of Service", year: "2023" },
-                { title: "Awards Ceremony", year: "2022" },
-                { title: "Industry Summit", year: "2022" },
-                { title: "Veterans Recognition", year: "2021" }
+                { year: "2024", title: "2024 Salute to Service" },
+                { year: "2023", title: "Placeholder Event" },
+                { year: "2022", title: "Placeholder Event" },
+                { year: "2021", title: "Placeholder Event" }
               ].map((event, idx) => (
                 <div key={idx} className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition hover:scale-[1.03]">
                   <div className="aspect-video bg-gradient-to-br from-steel-blue to-navy group-hover:scale-110 transition duration-300"></div>
