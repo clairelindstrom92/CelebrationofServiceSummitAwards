@@ -165,7 +165,7 @@ export default function Home() {
                 <li>Share information about upcoming events and initiatives</li>
                 <li>Sell tickets for high-level receptions and summits</li>
                 <li>Attract sponsors and philanthropic partners</li>
-                <li>Build awareness of iSCI's Celebration of Service™ Series</li>
+                <li>Build awareness of iSCI&apos;s Celebration of Service™ Series</li>
               </ul>
             </div>
           </SectionWrapper>
@@ -284,7 +284,7 @@ export default function Home() {
                   <div className="p-4">
                     <h3 className="font-heading font-semibold mb-1">Honoree Name</h3>
                     <p className="text-sm text-gray-600 mb-2">Title/Organization</p>
-                    <p className="text-sm text-gray-700">Brief bio description of the honoree's achievements and contributions.</p>
+                    <p className="text-sm text-gray-700">Brief bio description of the honoree&apos;s achievements and contributions.</p>
                   </div>
                 </div>
               ))}
@@ -301,7 +301,7 @@ export default function Home() {
             <h2 className="text-5xl md:text-6xl font-heading font-bold text-center mb-16 text-navy tracking-tight">Reception Circle</h2>
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <p className="text-xl md:text-2xl leading-relaxed">
-                The Reception Circle is iSCI's exclusive network of legacy supporters and sponsors who help sustain 
+                The Reception Circle is iSCI&apos;s exclusive network of legacy supporters and sponsors who help sustain 
                 the Celebration of Service™ Event Series through their commitment to advancing inclusive economic 
                 pathways and cultural diplomacy.
               </p>
