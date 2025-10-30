@@ -1,25 +1,25 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Lato, Montserrat, Great_Vibes } from 'next/font/google'
+import { Playfair_Display, Montserrat, Lato, Great_Vibes } from 'next/font/google'
 import './globals.css'
 
 const playfairDisplay = Playfair_Display({ 
   subsets: ['latin'],
-  weight: ['500', '700'],
-  variable: '--font-heading',
-  display: 'swap',
-})
-
-const lato = Lato({ 
-  subsets: ['latin'],
   weight: ['400', '700'],
-  variable: '--font-body',
+  variable: '--font-heading',
   display: 'swap',
 })
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],
-  weight: ['500', '600'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-nav',
+  display: 'swap',
+})
+
+const lato = Lato({ 
+  subsets: ['latin'],
+  weight: ['300', '400', '700'],
+  variable: '--font-body',
   display: 'swap',
 })
 
@@ -42,7 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${playfairDisplay.variable} ${lato.variable} ${montserrat.variable} ${greatVibes.variable} font-body antialiased`}>
+      <body className={`${playfairDisplay.variable} ${montserrat.variable} ${lato.variable} ${greatVibes.variable} font-body antialiased`}>
         {children}
       </body>
     </html>
