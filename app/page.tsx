@@ -106,14 +106,19 @@ export default function Home() {
           <SectionWrapper>
             {/* Logo */}
             <div className="mb-8 md:mb-12 flex justify-center">
-              <div className="w-auto max-w-[180px] sm:max-w-[220px] md:max-w-[280px]">
-                <Image 
-                  src="/logo.png" 
-                  alt="Leadership in Sports, Wellness & Service Logo" 
-                  width={400} 
-                  height={400}
-                  className="w-full h-auto drop-shadow-2xl"
-                />
+              <div className="relative w-auto max-w-[220px] sm:max-w-[260px] md:max-w-[320px]">
+                <div className="rounded-full overflow-hidden shadow-2xl" style={{ 
+                  boxShadow: '0 0 40px rgba(0,0,0,0.3), 0 0 80px rgba(0,0,0,0.2), inset 0 0 20px rgba(0,0,0,0.1)' 
+                }}>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent via-white/5 to-transparent pointer-events-none"></div>
+                  <Image 
+                    src="/logo.png" 
+                    alt="Leadership in Sports, Wellness & Service Logo" 
+                    width={400} 
+                    height={400}
+                    className="w-full h-auto rounded-full"
+                  />
+                </div>
               </div>
             </div>
 
@@ -153,14 +158,6 @@ export default function Home() {
                 Our mission: <span className="font-semibold">Advance inclusive economic pathways, cultural diplomacy, and leadership development</span> 
                 across the Defense Industrial Complex and creative sectors — including sports, wellness, and the arts.
               </p>
-              <div className="metallic-divider my-8"></div>
-              <p className="font-semibold text-xl">Key Goals:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Share information about upcoming events and initiatives</li>
-                <li>Sell tickets for high-level receptions and summits</li>
-                <li>Attract sponsors and philanthropic partners</li>
-                <li>Build awareness of iSCI&apos;s Celebration of Service™ Series</li>
-              </ul>
             </div>
           </SectionWrapper>
         </div>
@@ -256,23 +253,35 @@ export default function Home() {
         <div className="container mx-auto px-4 max-w-6xl">
           <SectionWrapper>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-16 text-navy tracking-tight">Sponsorship Opportunities</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
               {[
                 { tier: "Commander-in-Chief", amount: "$25,000", benefits: ["Title recognition", "Remarks", "Premier logo placement"] },
                 { tier: "General's Circle", amount: "$15,000", benefits: ["On-stage recognition", "Media inclusion"] },
                 { tier: "Distinguished Partner", amount: "$10,000", benefits: ["Logo on collateral", "VIP access"] },
-                { tier: "Legacy Supporter", amount: "$5,000", benefits: ["Table sponsorship", "Program acknowledgment"] }
-              ].map((sponsor, idx) => (
-                <div key={idx} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition border-2 border-silver/30 hover:border-steel-blue">
-                  <h3 className="text-xl font-heading font-bold text-navy mb-2">{sponsor.tier}</h3>
-                  <div className="text-3xl font-heading font-bold text-steel-blue mb-4">{sponsor.amount}</div>
-                  <ul className="space-y-1">
-                    {sponsor.benefits.map((benefit, i) => (
-                      <li key={i} className="text-sm text-gray-600">• {benefit}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+                { tier: "Legacy Supporter", amount: "$5,000", benefits: ["Table sponsorship", "Program acknowledgment"] },
+                { tier: "Individual Sponsor", amount: "$1,000", benefits: ["Individual recognition", "Event access"] }
+              ].map((sponsor, idx) => {
+                const emailSubject = encodeURIComponent(`Sponsorship Inquiry - ${sponsor.tier} (${sponsor.amount})`);
+                const emailBody = encodeURIComponent(`Dear iSCI Team,\n\nI am interested in the ${sponsor.tier} sponsorship tier at ${sponsor.amount} for the Celebration of Service Summit & Awards Reception.\n\nPlease provide more information about this sponsorship opportunity.\n\nThank you,\n[Your Name]`);
+                const mailtoLink = `mailto:inclusivesecuritycollectiveinitiative@isciaccess.org?subject=${emailSubject}&body=${emailBody}`;
+                
+                return (
+                  <div 
+                    key={idx} 
+                    onClick={() => window.location.href = mailtoLink}
+                    className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition border-2 border-silver/30 hover:border-steel-blue cursor-pointer hover:scale-[1.03]"
+                  >
+                    <h3 className="text-xl font-heading font-bold text-navy mb-2">{sponsor.tier}</h3>
+                    <div className="text-3xl font-heading font-bold text-steel-blue mb-4">{sponsor.amount}</div>
+                    <ul className="space-y-1 mb-4">
+                      {sponsor.benefits.map((benefit, i) => (
+                        <li key={i} className="text-sm text-gray-600">• {benefit}</li>
+                      ))}
+                    </ul>
+                    <p className="text-xs text-steel-blue font-semibold mt-4">Click to inquire</p>
+                  </div>
+                );
+              })}
             </div>
           </SectionWrapper>
         </div>
