@@ -476,7 +476,8 @@ export default function Home() {
                       alt="Claradith 'Clara' E. Landry"
                       width={224}
                       height={224}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
+                      style={{ objectPosition: 'center top' }}
                     />
                   </div>
                 </div>
