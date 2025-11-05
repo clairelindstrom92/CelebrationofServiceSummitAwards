@@ -129,9 +129,11 @@ export default function Home() {
             <p className="text-sm sm:text-base md:text-lg font-nav font-bold mb-6 text-silver tracking-widest drop-shadow-md uppercase" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
               Honor Legacy. Unite the Future.
             </p>
-            <div className="text-sm sm:text-base md:text-lg text-white/95 mb-4 font-light drop-shadow-md space-y-1">
+            <div className="text-sm sm:text-base md:text-lg text-white/95 mb-4 font-light drop-shadow-md space-y-2">
               <p>Tuesday, November 11, 2025</p>
               <p>Army & Navy Country Club • Arlington, VA</p>
+              <p>Capacity: 125 Guests</p>
+              <p>Dress Code: Classic Chic / Cocktail Attire</p>
             </div>
             <div className="metallic-divider my-6 mx-auto max-w-md"></div>
             <button 
@@ -248,18 +250,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Attendee Breakdown Section */}
+      <section className="py-16 md:py-32 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <SectionWrapper>
+            <div className="max-w-4xl mx-auto text-center">
+              <p className="text-base md:text-lg leading-relaxed text-gray-700">
+                125 guests total – 45% Defense Leaders, 35% Corporate & Sports, 20% Nonprofit & Media. Sectors represented include Defense, Sports, Tech, Policy, Innovation, Media, Finance, Law, and Education.
+              </p>
+            </div>
+          </SectionWrapper>
+        </div>
+      </section>
+
       {/* Sponsors Section */}
       <section ref={sponsorsRef} className="py-16 md:py-32 bg-gradient-to-b from-white to-steel-blue/5">
         <div className="container mx-auto px-4 max-w-6xl">
           <SectionWrapper>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-16 text-navy tracking-tight">Sponsorship Opportunities</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto mb-12">
               {[
-                { tier: "Commander-in-Chief", amount: "$25,000", benefits: ["Title recognition", "Remarks", "Premier logo placement"] },
-                { tier: "General's Circle", amount: "$15,000", benefits: ["On-stage recognition", "Media inclusion"] },
-                { tier: "Distinguished Partner", amount: "$10,000", benefits: ["Logo on collateral", "VIP access"] },
-                { tier: "Legacy Supporter", amount: "$5,000", benefits: ["Table sponsorship", "Program acknowledgment"] },
-                { tier: "Individual Sponsor", amount: "$1,000", benefits: ["Individual recognition", "Event access"] }
+                { tier: "Presenting Sponsor", amount: "$25,000", benefits: ["Title recognition", "Remarks", "Premier logo placement"] },
+                { tier: "Platinum Sponsor", amount: "$20,000", benefits: ["On-stage recognition", "Media inclusion", "VIP access"] },
+                { tier: "Leadership Sponsor", amount: "$15,000", benefits: ["Recognition", "Media inclusion", "Event access"] },
+                { tier: "Sports Sponsor", amount: "$10,000", benefits: ["Logo on collateral", "VIP access"] },
+                { tier: "Service Sponsor", amount: "$5,000", benefits: ["Table sponsorship", "Program acknowledgment"] }
               ].map((sponsor, idx) => {
                 const emailSubject = encodeURIComponent(`Sponsorship Inquiry - ${sponsor.tier} (${sponsor.amount})`);
                 const emailBody = encodeURIComponent(`Dear iSCI Team,\n\nI am interested in the ${sponsor.tier} sponsorship tier at ${sponsor.amount} for the Celebration of Service Summit & Awards Reception.\n\nPlease provide more information about this sponsorship opportunity.\n\nThank you,\n[Your Name]`);
@@ -282,6 +297,34 @@ export default function Home() {
                   </div>
                 );
               })}
+            </div>
+            
+            {/* Distinguished Service Founders Brigade Sub-section */}
+            <div className="mt-12 max-w-5xl mx-auto">
+              <h3 className="text-2xl md:text-3xl font-heading font-bold text-center mb-6 text-navy">Distinguished Service Founders Brigade</h3>
+              <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { amount: "$1,000" },
+                  { amount: "$2,500" },
+                  { amount: "$5,000" },
+                  { amount: "$10,000" }
+                ].map((level, idx) => {
+                  const emailSubject = encodeURIComponent(`Founders Brigade Inquiry - ${level.amount}`);
+                  const emailBody = encodeURIComponent(`Dear iSCI Team,\n\nI am interested in the Distinguished Service Founders Brigade contribution level at ${level.amount} for the Celebration of Service Summit & Awards Reception.\n\nPlease provide more information about this opportunity.\n\nThank you,\n[Your Name]`);
+                  const mailtoLink = `mailto:inclusivesecuritycollectiveinitiative@isciaccess.org?subject=${emailSubject}&body=${emailBody}`;
+                  
+                  return (
+                    <div 
+                      key={idx}
+                      onClick={() => window.location.href = mailtoLink}
+                      className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition border-2 border-silver/30 hover:border-steel-blue cursor-pointer hover:scale-[1.02] text-center"
+                    >
+                      <div className="text-2xl font-heading font-bold text-steel-blue mb-2">{level.amount}</div>
+                      <p className="text-xs text-steel-blue font-semibold mt-2">Click to inquire</p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </SectionWrapper>
         </div>
@@ -359,6 +402,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Award Categories Section */}
+      <section className="py-16 md:py-32 bg-gradient-to-b from-white to-silver/10">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <SectionWrapper>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-12 text-navy tracking-tight">Award Categories (Forthcoming)</h2>
+            <div className="max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
+                  <p className="font-heading font-semibold text-navy">Diplomacy Award</p>
+                </div>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
+                  <p className="font-heading font-semibold text-navy">Corporate-Sponsor Service Award</p>
+                </div>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
+                  <p className="font-heading font-semibold text-navy">Host City Award</p>
+                </div>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
+                  <p className="font-heading font-semibold text-navy">Military Academy Recognition</p>
+                </div>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
+                  <p className="font-heading font-semibold text-navy">Legacy in Service Award</p>
+                </div>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
+                  <p className="font-heading font-semibold text-navy">Wellness & Resilience Highlight</p>
+                </div>
+              </div>
+            </div>
+          </SectionWrapper>
+        </div>
+      </section>
+
       {/* Reception Circle Section */}
       <section ref={receptionRef} className="py-16 md:py-32 bg-gradient-to-br from-steel-blue/10 via-steel-blue/5 to-navy/10 text-navy relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-steel-blue/20 to-transparent"></div>
@@ -381,6 +455,31 @@ export default function Home() {
               >
                 Become a Partner
               </a>
+            </div>
+          </SectionWrapper>
+        </div>
+      </section>
+
+      {/* Meet the Founder Section */}
+      <section className="py-16 md:py-32 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <SectionWrapper>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-12 text-navy tracking-tight">Meet the Founder</h2>
+            <div className="max-w-4xl mx-auto text-center space-y-4">
+              <h3 className="text-2xl md:text-3xl font-heading font-bold text-navy mb-2">
+                Claradith &quot;Clara&quot; E. Landry
+              </h3>
+              <p className="text-lg md:text-xl font-semibold text-steel-blue mb-6">
+                Founder & CEO, Inclusive Security Collective Initiative (iSCI)
+              </p>
+              <div className="text-base md:text-lg leading-relaxed text-gray-700 space-y-4">
+                <p>
+                  Claradith &quot;Clara&quot; E. Landry is the visionary founder and CEO of Inclusive Security Collective Initiative (iSCI), dedicated to advancing inclusive economic pathways, cultural diplomacy, and leadership development across the Defense Industrial Complex and creative sectors.
+                </p>
+                <p>
+                  Through the Celebration of Service™ Event Series, she bridges defense, industry, and innovation, creating experiential programming that celebrates leadership, service, and community while fostering meaningful connections between diverse sectors.
+                </p>
+              </div>
             </div>
           </SectionWrapper>
         </div>
