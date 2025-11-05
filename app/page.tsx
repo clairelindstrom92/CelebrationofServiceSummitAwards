@@ -8,6 +8,7 @@ import Image from 'next/image'
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [showBio, setShowBio] = useState(false)
+  const [showFounderBio, setShowFounderBio] = useState(false)
   const heroRef = useRef(null)
   const aboutRef = useRef(null)
   const scheduleRef = useRef(null)
@@ -465,20 +466,76 @@ export default function Home() {
         <div className="container mx-auto px-4 max-w-6xl">
           <SectionWrapper>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-12 text-navy tracking-tight">Meet the Founder</h2>
-            <div className="max-w-4xl mx-auto text-center space-y-4">
-              <h3 className="text-2xl md:text-3xl font-heading font-bold text-navy mb-2">
-                Claradith &quot;Clara&quot; E. Landry
-              </h3>
-              <p className="text-lg md:text-xl font-semibold text-steel-blue mb-6">
-                Founder & CEO, Inclusive Security Collective Initiative (iSCI)
-              </p>
-              <div className="text-base md:text-lg leading-relaxed text-gray-700 space-y-4">
-                <p>
-                  Claradith &quot;Clara&quot; E. Landry is the visionary founder and CEO of Inclusive Security Collective Initiative (iSCI), dedicated to advancing inclusive economic pathways, cultural diplomacy, and leadership development across the Defense Industrial Complex and creative sectors.
-                </p>
-                <p>
-                  Through the Celebration of Service™ Event Series, she bridges defense, industry, and innovation, creating experiential programming that celebrates leadership, service, and community while fostering meaningful connections between diverse sectors.
-                </p>
+            <div className="max-w-4xl mx-auto">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+                {/* Image */}
+                <div className="flex-shrink-0">
+                  <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl border-4 border-steel-blue/30">
+                    <Image
+                      src="/clara.png"
+                      alt="Claradith 'Clara' E. Landry"
+                      width={224}
+                      height={224}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1 text-center md:text-left space-y-4">
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-heading font-bold text-navy mb-2">
+                      Claradith &quot;Clara&quot; E. Landry
+                    </h3>
+                    <p className="text-lg md:text-xl font-semibold text-steel-blue mb-1">
+                      Army Veteran | Founder | CEO
+                    </p>
+                    <p className="text-base md:text-lg font-semibold text-steel-blue mb-4">
+                      Inclusive Security Collective Initiative (iSCI) &<br />
+                      Celebration of Service™ Event Series
+                    </p>
+                  </div>
+                  
+                  <div className="text-base md:text-lg leading-relaxed text-gray-700 space-y-4">
+                    {!showFounderBio ? (
+                      <>
+                        <p>
+                          A former Presidential Advisor, Corporate Senior Executive, and Military Intelligence Officer, I have dedicated my career to connecting military, corporate, and cultural communities through strategic storytelling and experiential design.
+                        </p>
+                        <p>
+                          For nearly two decades, my work has centered on purpose, culture, innovation, expansion, and community-bridging the gap between defense, diplomacy, innovation, community, and industry. My experience spans global platforms that celebrate leadership and service, from developing communications and strategic frameworks for senior military leaders to advising on corporate positioning that aligns mission, values, and impact.
+                        </p>
+                        <button
+                          onClick={() => setShowFounderBio(true)}
+                          className="text-steel-blue hover:text-navy font-semibold underline transition mt-2"
+                        >
+                          Read more
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <p>
+                          A former Presidential Advisor, Corporate Senior Executive, and Military Intelligence Officer, I have dedicated my career to connecting military, corporate, and cultural communities through strategic storytelling and experiential design.
+                        </p>
+                        <p>
+                          For nearly two decades, my work has centered on purpose, culture, innovation, expansion, and community-bridging the gap between defense, diplomacy, innovation, community, and industry. My experience spans global platforms that celebrate leadership and service, from developing communications and strategic frameworks for senior military leaders to advising on corporate positioning that aligns mission, values, and impact.
+                        </p>
+                        <p>
+                          I am a proud graduate of Saint Mary&apos;s College of Notre Dame and a commissioned officer from the prestigious Army ROTC program at the University of Notre Dame-foundations that deeply inform my commitment to service, excellence, and community.
+                        </p>
+                        <p>
+                          The Celebration of Service™ event series was created to honor the enduring legacy of military service and the commitment it represents-one rooted in valor, unity, and America&apos;s core values. Through this series, my goal is to preserve tradition while celebrating the modern evolution of service. It is both a professional mission and a personal calling: to build community, cement a legacy of service, and inspire the next generation of leaders who will continue to shape our nation&apos;s story.
+                        </p>
+                        <button
+                          onClick={() => setShowFounderBio(false)}
+                          className="text-steel-blue hover:text-navy font-semibold underline transition mt-2"
+                        >
+                          Show less
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </SectionWrapper>
