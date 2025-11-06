@@ -746,35 +746,6 @@ export default function Home() {
       {/* Section Divider */}
       <div className="h-[4px] w-full bg-gradient-to-r from-transparent via-[#cfd1d3]/50 to-transparent my-16 rounded-full"></div>
 
-      {/* Additional Speakers Section */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <SectionWrapper>
-            <h2 className="text-4xl font-serif text-[#0f172a] tracking-wide border-b border-[#cfd1d3]/60 pb-2 inline-block mb-8">
-              Additional Speakers
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="elegant-card p-8 rounded-2xl shadow-lg">
-                <h3 className="text-base font-heading font-semibold mb-6 text-navy">Speakers to be Confirmed:</h3>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-base text-gray-700">
-                  <li className="flex items-start gap-2"><span className="text-[#cfd1d3] mt-1">⬤</span> Paxton Baker – Chairman, Washington Nationals Founding Partners Group (2019 World Series Champions)</li>
-                  <li className="flex items-start gap-2"><span className="text-[#cfd1d3] mt-1">⬤</span> Travis Smith / Center Circle</li>
-                  <li className="flex items-start gap-2"><span className="text-[#cfd1d3] mt-1">⬤</span> Face the Fight representative (TBD)</li>
-                  <li className="flex items-start gap-2"><span className="text-[#cfd1d3] mt-1">⬤</span> LTG (Ret.) Leslie Smith (AUSA)</li>
-                  <li className="flex items-start gap-2"><span className="text-[#cfd1d3] mt-1">⬤</span> MAJ (Ret.) Natasha Fultz-Castro</li>
-                  <li className="flex items-start gap-2"><span className="text-[#cfd1d3] mt-1">⬤</span> Embassy representative (Spain or Middle East)</li>
-                  <li className="flex items-start gap-2"><span className="text-[#cfd1d3] mt-1">⬤</span> USMA and USNA emblems</li>
-                  <li className="flex items-start gap-2"><span className="text-[#cfd1d3] mt-1">⬤</span> MC – TBD</li>
-                </ul>
-              </div>
-            </div>
-          </SectionWrapper>
-        </div>
-      </section>
-
-      {/* Section Divider */}
-      <div className="h-[4px] w-full bg-gradient-to-r from-transparent via-[#cfd1d3]/50 to-transparent my-16 rounded-full"></div>
-
       {/* Program Highlights Section */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-6 max-w-6xl">
