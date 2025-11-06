@@ -344,7 +344,7 @@ export default function Home() {
                 bridging defense, industry, and innovation through experiential programming that celebrates leadership, service, and community.
               </p>
               <p>
-                Our mission: <span className="font-semibold">Advance inclusive economic pathways, cultural diplomacy, and leadership development</span> 
+                Our mission: <span className="font-semibold">Advance inclusive economic pathways, cultural diplomacy, and leadership development </span> 
                 across the Defense Industrial Complex and creative sectors — including sports, wellness, and the arts.
               </p>
             </div>
@@ -490,58 +490,42 @@ export default function Home() {
         <div className="container mx-auto px-4 max-w-6xl">
           <SectionWrapper>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-16 text-navy tracking-tight">Sponsorship Opportunities</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto mb-12">
-              {[
-                { tier: "Presenting Sponsor", amount: "$25,000", benefits: ["Title recognition", "Remarks", "Premier logo placement"] },
-                { tier: "Platinum Sponsor", amount: "$20,000", benefits: ["On-stage recognition", "Media inclusion", "VIP access"] },
-                { tier: "Leadership Sponsor", amount: "$15,000", benefits: ["Recognition", "Media inclusion", "Event access"] },
-                { tier: "Sports Sponsor", amount: "$10,000", benefits: ["Logo on collateral", "VIP access"] },
-                { tier: "Service Sponsor", amount: "$5,000", benefits: ["Table sponsorship", "Program acknowledgment"] }
-              ].map((sponsor, idx) => {
-                const emailSubject = encodeURIComponent(`Sponsorship Inquiry - ${sponsor.tier} (${sponsor.amount})`);
-                const emailBody = encodeURIComponent(`Dear iSCI Team,\n\nI am interested in the ${sponsor.tier} sponsorship tier at ${sponsor.amount} for the Celebration of Service Summit & Awards Reception.\n\nPlease provide more information about this sponsorship opportunity.\n\nThank you,\n[Your Name]`);
-                const mailtoLink = `mailto:inclusivesecuritycollectiveinitiative@isciaccess.org?subject=${emailSubject}&body=${emailBody}`;
-                
-                return (
-                  <div 
-                    key={idx} 
-                    className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border-2 border-silver/30 hover:border-steel-blue hover:-translate-y-1"
-                  >
-                    <h3 className="text-xl font-heading font-bold text-navy mb-2">{sponsor.tier}</h3>
-                    <div className="text-3xl font-heading font-bold text-steel-blue mb-4">{sponsor.amount}</div>
-                    <ul className="space-y-1">
-                      {sponsor.benefits.map((benefit, i) => (
-                        <li key={i} className="text-sm text-gray-600">• {benefit}</li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-            
-            {/* Distinguished Service Founders Brigade Sub-section */}
-            <div className="mt-12 max-w-5xl mx-auto">
-              <h3 className="text-2xl md:text-3xl font-heading font-bold text-center mb-6 text-navy">Distinguished Service Founders Brigade</h3>
-              <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-                {[
-                  { amount: "$1,000" },
-                  { amount: "$2,500" },
-                  { amount: "$5,000" },
-                  { amount: "$10,000" }
-                ].map((level, idx) => {
-                  const emailSubject = encodeURIComponent(`Founders Brigade Inquiry - ${level.amount}`);
-                  const emailBody = encodeURIComponent(`Dear iSCI Team,\n\nI am interested in the Distinguished Service Founders Brigade contribution level at ${level.amount} for the Celebration of Service Summit & Awards Reception.\n\nPlease provide more information about this opportunity.\n\nThank you,\n[Your Name]`);
-                  const mailtoLink = `mailto:inclusivesecuritycollectiveinitiative@isciaccess.org?subject=${emailSubject}&body=${emailBody}`;
-                  
-                  return (
-                    <div 
-                      key={idx}
-                      className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-2 border-silver/30 hover:border-steel-blue text-center hover:-translate-y-1"
-                    >
-                      <div className="text-2xl font-heading font-bold text-steel-blue">{level.amount}</div>
-                    </div>
-                  );
-                })}
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+              <div className="bg-white p-6 md:p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border-2 border-silver/30 hover:border-steel-blue hover:-translate-y-1 text-center">
+                <h3 className="text-xl md:text-2xl font-heading font-bold text-navy mb-3">Individual sponsor - Steward of Legacy</h3>
+                <div className="text-3xl md:text-4xl font-heading font-bold text-steel-blue mb-6">$500</div>
+                <a 
+                  href="https://buy.stripe.com/9B614of21bEb0yuesBfw405"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-steel-blue hover:bg-steel-blue/90 active:bg-steel-blue/80 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 text-center min-h-[44px] flex items-center justify-center hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Sponsor Now
+                </a>
+              </div>
+              <div className="bg-white p-6 md:p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border-2 border-silver/30 hover:border-steel-blue hover:-translate-y-1 text-center">
+                <h3 className="text-xl md:text-2xl font-heading font-bold text-navy mb-3">Individual Sponsor - Community Champion</h3>
+                <div className="text-3xl md:text-4xl font-heading font-bold text-steel-blue mb-6">$1,000</div>
+                <a 
+                  href="https://buy.stripe.com/5kQbJ28DDgYv0yubgpfw406"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-steel-blue hover:bg-steel-blue/90 active:bg-steel-blue/80 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 text-center min-h-[44px] flex items-center justify-center hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Sponsor Now
+                </a>
+              </div>
+              <div className="bg-white p-6 md:p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border-2 border-silver/30 hover:border-steel-blue hover:-translate-y-1 text-center">
+                <h3 className="text-xl md:text-2xl font-heading font-bold text-navy mb-3">Sponsorship - Legacy Supporter</h3>
+                <div className="text-3xl md:text-4xl font-heading font-bold text-steel-blue mb-6">$5,000</div>
+                <a 
+                  href="https://buy.stripe.com/3cIbJ2cTTeQndlg2JTfw407"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-steel-blue hover:bg-steel-blue/90 active:bg-steel-blue/80 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 text-center min-h-[44px] flex items-center justify-center hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Sponsor Now
+                </a>
               </div>
             </div>
           </SectionWrapper>
