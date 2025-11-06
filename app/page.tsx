@@ -492,7 +492,7 @@ export default function Home() {
                   <h3 className="text-base font-heading font-bold text-navy">Early Bird</h3>
                   <div className="w-12 h-1 bg-gradient-to-r from-platinum/40 to-platinum/70 rounded-full"></div>
                 </div>
-                <div className="text-lg font-heading font-bold text-platinum mb-6 text-center">$50</div>
+                <div className="text-3xl font-heading font-bold text-navy mb-6 text-center">$50</div>
                 <a 
                   href="https://buy.stripe.com/eVq14obPP4bJfto2JTfw401"
                   target="_blank"
@@ -507,7 +507,7 @@ export default function Home() {
                   <h3 className="text-base font-heading font-bold text-navy">General Admission</h3>
                   <div className="w-12 h-1 bg-gradient-to-r from-platinum/40 to-platinum/70 rounded-full"></div>
                 </div>
-                <div className="text-lg font-heading font-bold text-platinum mb-6 text-center">$75</div>
+                <div className="text-3xl font-heading font-bold text-navy mb-6 text-center">$75</div>
                 <a 
                   href="https://buy.stripe.com/bJe00kf21fUrfto84dfw403"
                   target="_blank"
@@ -522,7 +522,7 @@ export default function Home() {
                   <h3 className="text-base font-heading font-bold text-navy">Elevated Entry</h3>
                   <div className="w-12 h-1 bg-gradient-to-r from-platinum/40 to-platinum/70 rounded-full"></div>
                 </div>
-                <div className="text-lg font-heading font-bold text-platinum mb-6 text-center">$100</div>
+                <div className="text-3xl font-heading font-bold text-navy mb-6 text-center">$100</div>
                 <a 
                   href="https://buy.stripe.com/dRm3cw0779w34OKdoxfw400"
                   target="_blank"
@@ -537,7 +537,7 @@ export default function Home() {
                   <h3 className="text-base font-heading font-bold text-navy">Exclusive VIP Ticket + Tour Option</h3>
                   <div className="w-12 h-1 bg-gradient-to-r from-platinum/40 to-platinum/70 rounded-full"></div>
                 </div>
-                <div className="text-lg font-heading font-bold text-platinum mb-2 text-center">$150</div>
+                <div className="text-3xl font-heading font-bold text-navy mb-2 text-center">$150</div>
                 <p className="text-sm text-navy/80 mb-6 text-center">(max 10 tickets)</p>
                 <a 
                   href="https://buy.stripe.com/bJe14o5rr9w31Cybgpfw402"
@@ -569,7 +569,7 @@ export default function Home() {
                   <div className="w-16 h-1 bg-gradient-to-r from-transparent via-platinum/40 to-transparent mx-auto mb-3 rounded-full"></div>
                   <h3 className="text-lg font-heading font-bold text-navy mb-3">Honor Supporter</h3>
                 </div>
-                <div className="text-2xl font-heading font-bold text-platinum mb-6 text-center">$500</div>
+                <div className="text-3xl font-heading font-bold text-navy mb-6 text-center">$500</div>
                 <ul className="text-base text-gray-700 space-y-2 mb-6 flex-grow">
                   <li>• Name listed in program and website</li>
                   <li>• Recognition in remarks</li>
@@ -588,7 +588,7 @@ export default function Home() {
                   <div className="w-16 h-1 bg-gradient-to-r from-transparent via-platinum/40 to-transparent mx-auto mb-3 rounded-full"></div>
                   <h3 className="text-lg font-heading font-bold text-navy mb-3">Community Champion</h3>
                 </div>
-                <div className="text-2xl font-heading font-bold text-platinum mb-6 text-center">$1,000</div>
+                <div className="text-3xl font-heading font-bold text-navy mb-6 text-center">$1,000</div>
                 <ul className="text-base text-gray-700 space-y-2 mb-6 flex-grow">
                   <li>• Includes Honor Supporter benefits</li>
                   <li>• Logo placement on event signage and digital flyer</li>
@@ -608,7 +608,7 @@ export default function Home() {
                   <div className="w-16 h-1 bg-gradient-to-r from-transparent via-platinum/60 to-transparent mx-auto mb-3 rounded-full"></div>
                   <h3 className="text-lg font-heading font-bold text-navy mb-3">Legacy Supporter</h3>
                 </div>
-                <div className="text-2xl font-heading font-bold text-platinum mb-6 text-center">$5,000</div>
+                <div className="text-3xl font-heading font-bold text-navy mb-6 text-center">$5,000</div>
                 <ul className="text-base text-gray-700 space-y-2 mb-6 flex-grow">
                   <li>• Includes all previous benefits</li>
                   <li>• Four complimentary VIP tickets</li>
