@@ -467,7 +467,7 @@ export default function Home() {
       <div className="h-[4px] w-full bg-gradient-to-r from-transparent via-[#cfd1d3]/50 to-transparent my-16 rounded-full"></div>
 
       {/* Tickets Section */}
-      <section ref={ticketsRef} className="py-20 md:py-28 bg-[#f9f9f6] section-enhanced">
+      <section id="tickets" ref={ticketsRef} className="py-20 md:py-28 bg-[#f9f9f6] section-enhanced">
         <div className="container mx-auto px-6 max-w-6xl">
           <SectionWrapper>
             <h2 className="font-serif font-bold text-4xl md:text-5xl text-[#0f172a] tracking-wider mb-4">
