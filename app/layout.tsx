@@ -33,6 +33,29 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: 'Celebration of Service Summit & Awards Reception | iSCI',
   description: 'Leadership in Sports, Wellness & Service Summit & Reception hosted by Inclusive Security Collective Initiative (iSCI) LLC',
+  openGraph: {
+    title: 'Celebration of Service Summit & Awards Reception | iSCI',
+    description: 'Leadership in Sports, Wellness & Service Summit & Reception hosted by Inclusive Security Collective Initiative (iSCI) LLC',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Leadership in Sports, Wellness & Service',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Celebration of Service Summit & Awards Reception | iSCI',
+    description: 'Leadership in Sports, Wellness & Service Summit & Reception hosted by Inclusive Security Collective Initiative (iSCI) LLC',
+    images: ['/logo.png'],
+  },
+  icons: {
+    icon: '/background33.png',
+    apple: '/background33.png',
+  },
 }
 
 export default function RootLayout({
