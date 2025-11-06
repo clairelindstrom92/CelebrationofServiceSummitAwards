@@ -10,11 +10,16 @@ const config: Config = {
     extend: {
       colors: {
         'steel-blue': '#4682B4',
-        'navy': '#0C1F36',
+        'navy': '#0f172a',
         'navy-old': '#001F3F',
         'navy-deep': '#1e3a8a',
         'silver': '#C0C0C0',
         'metallic-gray': '#A9A9A9',
+        'platinum': {
+          light: '#e9e9ec',
+          DEFAULT: '#cfd1d3',
+          dark: '#a7a9ac',
+        },
         'gold': {
           light: '#f2e2a2',
           DEFAULT: '#C5A64A',
@@ -24,7 +29,7 @@ const config: Config = {
         'gold-light-old': '#E5C97A',
         'gold-dark-old': '#A68B4A',
         'gold-accent': '#D4AF37',
-        'ivory': '#F9F7F3',
+        'ivory': '#f9f9f6',
         'charcoal': '#1E1E1E',
         'soft-gray': '#E7E4DE',
         'bronze': '#8A6E2F',
