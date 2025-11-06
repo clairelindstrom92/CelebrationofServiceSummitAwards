@@ -9,6 +9,8 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [showBio, setShowBio] = useState(false)
   const [showFounderBio, setShowFounderBio] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+  const [showScrollTop, setShowScrollTop] = useState(false)
   const heroRef = useRef(null)
   const aboutRef = useRef(null)
   const scheduleRef = useRef(null)
@@ -22,6 +24,44 @@ export default function Home() {
     ref.current?.scrollIntoView({ behavior: 'smooth' })
     setIsMobileMenuOpen(false)
   }
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  // Track active section and scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 100
+      setShowScrollTop(scrollPosition > 400)
+
+      const sections = [
+        { ref: heroRef, id: 'hero' },
+        { ref: aboutRef, id: 'about' },
+        { ref: scheduleRef, id: 'schedule' },
+        { ref: ticketsRef, id: 'tickets' },
+        { ref: sponsorsRef, id: 'sponsors' },
+        { ref: honoreesRef, id: 'honorees' },
+        { ref: receptionRef, id: 'reception' },
+        { ref: contactRef, id: 'contact' }
+      ]
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i]
+        if (section.ref.current) {
+          const offsetTop = (section.ref.current as HTMLElement).offsetTop
+          if (scrollPosition >= offsetTop) {
+            setActiveSection(section.id)
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const SectionWrapper = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => {
     const ref = useRef(null)
@@ -42,6 +82,14 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
+      {/* Skip to content link */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-steel-blue focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg"
+      >
+        Skip to main content
+      </a>
+
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-sm shadow-lg">
         <div className="container mx-auto px-4">
@@ -49,8 +97,9 @@ export default function Home() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white"
+              className="md:hidden text-white min-h-[44px] min-w-[44px] flex items-center justify-center p-2"
               aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMobileMenuOpen ? (
@@ -63,21 +112,66 @@ export default function Home() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-6 flex-1">
-              <button onClick={() => scrollToSection(ticketsRef)} className="text-white hover:text-steel-blue transition">Tickets</button>
-              <button onClick={() => scrollToSection(honoreesRef)} className="text-white hover:text-steel-blue transition">Honorees</button>
-              <button onClick={() => scrollToSection(sponsorsRef)} className="text-white hover:text-steel-blue transition">Sponsors</button>
-              <button onClick={() => scrollToSection(receptionRef)} className="text-white hover:text-steel-blue transition">Reception Circle</button>
-              <button onClick={() => scrollToSection(aboutRef)} className="text-white hover:text-steel-blue transition">About iSCI</button>
+              <button 
+                onClick={() => scrollToSection(ticketsRef)} 
+                className={`transition font-nav font-medium text-sm tracking-wide uppercase py-2 px-1 border-b-2 ${
+                  activeSection === 'tickets' 
+                    ? 'text-steel-blue border-steel-blue' 
+                    : 'text-white/90 hover:text-steel-blue border-transparent hover:border-steel-blue/50'
+                }`}
+              >
+                Tickets
+              </button>
+              <button 
+                onClick={() => scrollToSection(honoreesRef)} 
+                className={`transition font-nav font-medium text-sm tracking-wide uppercase py-2 px-1 border-b-2 ${
+                  activeSection === 'honorees' 
+                    ? 'text-steel-blue border-steel-blue' 
+                    : 'text-white/90 hover:text-steel-blue border-transparent hover:border-steel-blue/50'
+                }`}
+              >
+                Honorees
+              </button>
+              <button 
+                onClick={() => scrollToSection(sponsorsRef)} 
+                className={`transition font-nav font-medium text-sm tracking-wide uppercase py-2 px-1 border-b-2 ${
+                  activeSection === 'sponsors' 
+                    ? 'text-steel-blue border-steel-blue' 
+                    : 'text-white/90 hover:text-steel-blue border-transparent hover:border-steel-blue/50'
+                }`}
+              >
+                Sponsors
+              </button>
+              <button 
+                onClick={() => scrollToSection(receptionRef)} 
+                className={`transition font-nav font-medium text-sm tracking-wide uppercase py-2 px-1 border-b-2 ${
+                  activeSection === 'reception' 
+                    ? 'text-steel-blue border-steel-blue' 
+                    : 'text-white/90 hover:text-steel-blue border-transparent hover:border-steel-blue/50'
+                }`}
+              >
+                Reception Circle
+              </button>
+              <button 
+                onClick={() => scrollToSection(aboutRef)} 
+                className={`transition font-nav font-medium text-sm tracking-wide uppercase py-2 px-1 border-b-2 ${
+                  activeSection === 'about' 
+                    ? 'text-steel-blue border-steel-blue' 
+                    : 'text-white/90 hover:text-steel-blue border-transparent hover:border-steel-blue/50'
+                }`}
+              >
+                About iSCI
+              </button>
             </div>
 
             {/* Social Icons */}
             <div className="flex items-center space-x-4">
-              <a href="https://instagram.com/isci_access_granted" target="_blank" rel="noopener noreferrer" className="text-white hover:text-steel-blue transition">
+              <a href="https://instagram.com/isci_access_granted" target="_blank" rel="noopener noreferrer" className="text-white hover:text-steel-blue transition min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Instagram">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
               </a>
-              <a href="https://linkedin.com/in/claradithlandry" target="_blank" rel="noopener noreferrer" className="text-white hover:text-steel-blue transition">
+              <a href="https://linkedin.com/in/claradithlandry" target="_blank" rel="noopener noreferrer" className="text-white hover:text-steel-blue transition min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="LinkedIn">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
@@ -87,21 +181,79 @@ export default function Home() {
 
           {/* Mobile Navigation */}
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-steel-blue/30">
+            <div className="md:hidden py-4 border-t border-steel-blue/30 animate-in slide-in-from-top duration-300">
               <div className="flex flex-col space-y-3">
-                <button onClick={() => scrollToSection(ticketsRef)} className="text-white hover:text-steel-blue transition text-left">Tickets</button>
-                <button onClick={() => scrollToSection(honoreesRef)} className="text-white hover:text-steel-blue transition text-left">Honorees</button>
-                <button onClick={() => scrollToSection(sponsorsRef)} className="text-white hover:text-steel-blue transition text-left">Sponsors</button>
-                <button onClick={() => scrollToSection(receptionRef)} className="text-white hover:text-steel-blue transition text-left">Reception Circle</button>
-                <button onClick={() => scrollToSection(aboutRef)} className="text-white hover:text-steel-blue transition text-left">About iSCI</button>
+                <button 
+                  onClick={() => scrollToSection(ticketsRef)} 
+                  className={`text-left py-2 px-2 rounded transition min-h-[44px] ${
+                    activeSection === 'tickets' 
+                      ? 'text-steel-blue bg-steel-blue/10 font-semibold' 
+                      : 'text-white/90 hover:text-steel-blue hover:bg-white/5'
+                  }`}
+                >
+                  Tickets
+                </button>
+                <button 
+                  onClick={() => scrollToSection(honoreesRef)} 
+                  className={`text-left py-2 px-2 rounded transition min-h-[44px] ${
+                    activeSection === 'honorees' 
+                      ? 'text-steel-blue bg-steel-blue/10 font-semibold' 
+                      : 'text-white/90 hover:text-steel-blue hover:bg-white/5'
+                  }`}
+                >
+                  Honorees
+                </button>
+                <button 
+                  onClick={() => scrollToSection(sponsorsRef)} 
+                  className={`text-left py-2 px-2 rounded transition min-h-[44px] ${
+                    activeSection === 'sponsors' 
+                      ? 'text-steel-blue bg-steel-blue/10 font-semibold' 
+                      : 'text-white/90 hover:text-steel-blue hover:bg-white/5'
+                  }`}
+                >
+                  Sponsors
+                </button>
+                <button 
+                  onClick={() => scrollToSection(receptionRef)} 
+                  className={`text-left py-2 px-2 rounded transition min-h-[44px] ${
+                    activeSection === 'reception' 
+                      ? 'text-steel-blue bg-steel-blue/10 font-semibold' 
+                      : 'text-white/90 hover:text-steel-blue hover:bg-white/5'
+                  }`}
+                >
+                  Reception Circle
+                </button>
+                <button 
+                  onClick={() => scrollToSection(aboutRef)} 
+                  className={`text-left py-2 px-2 rounded transition min-h-[44px] ${
+                    activeSection === 'about' 
+                      ? 'text-steel-blue bg-steel-blue/10 font-semibold' 
+                      : 'text-white/90 hover:text-steel-blue hover:bg-white/5'
+                  }`}
+                >
+                  About iSCI
+                </button>
               </div>
             </div>
           )}
         </div>
       </nav>
 
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-40 bg-steel-blue hover:bg-navy text-white p-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 min-h-[48px] min-w-[48px] flex items-center justify-center"
+          aria-label="Scroll to top"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </button>
+      )}
+
       {/* Hero Section */}
-      <section ref={heroRef} className="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+      <section ref={heroRef} id="main-content" className="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
         <div className="absolute inset-0 flag-overlay"></div>
         <div className="container mx-auto px-4 py-20 text-center text-white relative z-10">
           <SectionWrapper>
@@ -123,29 +275,63 @@ export default function Home() {
               </div>
             </div>
 
-            <p className="text-sm sm:text-base md:text-lg font-nav font-semibold mb-3 text-silver drop-shadow-md uppercase tracking-wide">
+            <p className="text-base sm:text-lg md:text-xl font-nav font-semibold mb-4 text-silver/90 drop-shadow-lg uppercase tracking-[0.15em] letter-spacing-wider">
               Celebration of Service™ Series
             </p>
-            <div className="metallic-divider my-4 mx-auto max-w-lg"></div>
-            <p className="text-sm sm:text-base md:text-lg font-nav font-bold mb-6 text-silver tracking-widest drop-shadow-md uppercase" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
+            <div className="metallic-divider my-5 mx-auto max-w-xl opacity-60"></div>
+            <p 
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-nav font-bold mb-8 tracking-[0.2em] drop-shadow-lg uppercase leading-relaxed"
+              style={{ 
+                background: 'linear-gradient(135deg, #E8E8E8 0%, #FFFFFF 30%, #FFFFFF 70%, #C0C0C0 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                textShadow: '0 4px 12px rgba(0,0,0,0.4)'
+              }}
+            >
               Honor Legacy. Unite the Future.
             </p>
-            <div className="text-sm sm:text-base md:text-lg text-white/95 mb-4 font-light drop-shadow-md space-y-2">
-              <p>Tuesday, November 11, 2025</p>
-              <p>Army & Navy Country Club • Arlington, VA</p>
-              <p>Capacity: 125 Guests</p>
-              <p>Dress Code: Classic Chic / Cocktail Attire</p>
+            <div className="metallic-divider my-6 mx-auto max-w-xl opacity-60"></div>
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center justify-center gap-2 text-white/95 drop-shadow-md">
+                <svg className="w-4 h-4 text-silver/70 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p className="text-sm sm:text-base md:text-lg font-body font-medium">Tuesday, November 11, 2025</p>
+              </div>
+              <div className="flex items-center justify-center gap-2 text-white/95 drop-shadow-md">
+                <svg className="w-4 h-4 text-silver/70 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <p className="text-sm sm:text-base md:text-lg font-body font-medium">Army & Navy Country Club • Arlington, VA</p>
+              </div>
+              <div className="flex items-center justify-center gap-2 text-white/90 drop-shadow-md">
+                <svg className="w-4 h-4 text-silver/70 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <p className="text-sm sm:text-base font-body">Capacity: <span className="font-semibold">125 Guests</span></p>
+              </div>
+              <div className="flex items-center justify-center gap-2 text-white/90 drop-shadow-md">
+                <svg className="w-4 h-4 text-silver/70 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                <p className="text-sm sm:text-base font-body">Dress Code: <span className="font-semibold">Classic Chic / Cocktail Attire</span></p>
+              </div>
             </div>
-            <div className="metallic-divider my-6 mx-auto max-w-md"></div>
+            <div className="metallic-divider my-6 mx-auto max-w-md opacity-60"></div>
             <button 
               onClick={() => scrollToSection(ticketsRef)}
-              className="bg-steel-blue hover:bg-steel-blue/90 text-white font-nav font-semibold py-3 px-10 rounded-lg transition transform hover:scale-105 shadow-xl uppercase tracking-wide"
+              className="bg-steel-blue hover:bg-steel-blue/90 active:bg-steel-blue/80 text-white font-nav font-semibold py-3 px-10 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl hover:shadow-2xl uppercase tracking-wide min-h-[48px]"
             >
               Buy Tickets
             </button>
           </SectionWrapper>
         </div>
       </section>
+
+      {/* Section Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
 
       {/* About Section */}
       <section ref={aboutRef} className="py-16 md:py-32 bg-white">
@@ -166,25 +352,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Section Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
+
       {/* Event Schedule Section */}
       <section ref={scheduleRef} className="py-16 md:py-32 bg-gradient-to-b from-navy/5 to-white">
         <div className="container mx-auto px-4 max-w-6xl">
           <SectionWrapper>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-16 text-navy tracking-tight">Event Schedule</h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
-              <div className="bg-white p-6 md:p-8 rounded-lg shadow-md border-t-4 border-steel-blue hover:shadow-lg transition" style={{ boxShadow: '0 4px 6px -1px rgba(148, 163, 184, 0.3)' }}>
+              <div className="bg-white p-6 md:p-8 rounded-lg shadow-md hover:shadow-xl border-t-4 border-steel-blue transition-all duration-300 hover:-translate-y-1">
                 <div className="text-xl md:text-2xl font-heading font-bold text-steel-blue mb-2">4:30 – 5:30 PM</div>
-                <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3">VIP Reception</h3>
+                <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3 text-navy">VIP Reception</h3>
                 <p className="text-sm md:text-base text-gray-600">Exclusive networking with honorees and special guests</p>
               </div>
-              <div className="bg-white p-6 md:p-8 rounded-lg shadow-md border-t-4 border-navy hover:shadow-lg transition" style={{ boxShadow: '0 4px 6px -1px rgba(148, 163, 184, 0.3)' }}>
+              <div className="bg-white p-6 md:p-8 rounded-lg shadow-md hover:shadow-xl border-t-4 border-navy transition-all duration-300 hover:-translate-y-1">
                 <div className="text-xl md:text-2xl font-heading font-bold text-navy mb-2">6:30 – 8:00 PM</div>
-                <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3">Main Program & Awards Presentation</h3>
+                <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3 text-navy">Main Program & Awards Presentation</h3>
                 <p className="text-sm md:text-base text-gray-600">Keynote addresses and recognition of distinguished leaders</p>
               </div>
-              <div className="bg-white p-6 md:p-8 rounded-lg shadow-md border-t-4 border-steel-blue hover:shadow-lg transition sm:col-span-2 md:col-span-1" style={{ boxShadow: '0 4px 6px -1px rgba(148, 163, 184, 0.3)' }}>
+              <div className="bg-white p-6 md:p-8 rounded-lg shadow-md hover:shadow-xl border-t-4 border-steel-blue transition-all duration-300 hover:-translate-y-1 sm:col-span-2 md:col-span-1">
                 <div className="text-xl md:text-2xl font-heading font-bold text-steel-blue mb-2">8:30 – 9:30 PM</div>
-                <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3">Closing Networking Reception</h3>
+                <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3 text-navy">Closing Networking Reception</h3>
                 <p className="text-sm md:text-base text-gray-600">Conclude the evening with refreshments and connections</p>
               </div>
             </div>
@@ -192,56 +381,59 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Section Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
+
       {/* Tickets Section */}
       <section ref={ticketsRef} className="py-16 md:py-32 bg-white">
         <div className="container mx-auto px-4 max-w-6xl">
           <SectionWrapper>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-16 text-navy tracking-tight">Reserve Your Seat</h2>
             <div className="grid sm:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-              <div className="bg-gradient-to-br from-silver/20 to-white p-6 md:p-8 rounded-lg shadow-xl hover:shadow-2xl border-2 border-silver/30 hover:border-steel-blue transition hover:scale-[1.02] group hover:ring-4 hover:ring-steel-blue/20">
-                <h3 className="text-lg md:text-xl font-heading font-bold mb-3">General Admission</h3>
+              <div className="bg-gradient-to-br from-silver/20 to-white p-6 md:p-8 rounded-lg shadow-lg hover:shadow-2xl border-2 border-silver/30 hover:border-steel-blue transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 group hover:ring-4 hover:ring-steel-blue/20">
+                <h3 className="text-lg md:text-xl font-heading font-bold mb-3 text-navy">General Admission</h3>
                 <div className="text-3xl md:text-4xl font-heading font-bold text-steel-blue mb-6">$50</div>
                 <a 
                   href="https://buy.stripe.com/eVq14obPP4bJfto2JTfw401"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full bg-steel-blue hover:bg-steel-blue/90 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg transition text-center text-sm md:text-base"
+                  className="block w-full bg-steel-blue hover:bg-steel-blue/90 active:bg-steel-blue/80 text-white font-bold py-3 md:py-3 px-4 md:px-6 rounded-lg transition-all duration-300 text-center text-sm md:text-base min-h-[44px] flex items-center justify-center hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Buy Ticket
                 </a>
               </div>
-              <div className="bg-gradient-to-br from-silver/20 to-white p-6 md:p-8 rounded-lg shadow-xl hover:shadow-2xl border-2 border-silver/30 hover:border-steel-blue transition hover:scale-[1.02] group hover:ring-4 hover:ring-steel-blue/20">
-                <h3 className="text-lg md:text-xl font-heading font-bold mb-3">General Admission</h3>
+              <div className="bg-gradient-to-br from-silver/20 to-white p-6 md:p-8 rounded-lg shadow-lg hover:shadow-2xl border-2 border-silver/30 hover:border-steel-blue transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 group hover:ring-4 hover:ring-steel-blue/20">
+                <h3 className="text-lg md:text-xl font-heading font-bold mb-3 text-navy">General Admission</h3>
                 <div className="text-3xl md:text-4xl font-heading font-bold text-steel-blue mb-6">$75</div>
                 <a 
                   href="https://buy.stripe.com/bJe00kf21fUrfto84dfw403"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full bg-steel-blue hover:bg-steel-blue/90 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg transition text-center text-sm md:text-base"
+                  className="block w-full bg-steel-blue hover:bg-steel-blue/90 active:bg-steel-blue/80 text-white font-bold py-3 md:py-3 px-4 md:px-6 rounded-lg transition-all duration-300 text-center text-sm md:text-base min-h-[44px] flex items-center justify-center hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Buy Ticket
                 </a>
               </div>
-              <div className="bg-gradient-to-br from-silver/20 to-white p-6 md:p-8 rounded-lg shadow-xl hover:shadow-2xl border-2 border-silver/30 hover:border-steel-blue transition hover:scale-[1.02] group hover:ring-4 hover:ring-steel-blue/20">
-                <h3 className="text-lg md:text-xl font-heading font-bold mb-3">General Admission</h3>
+              <div className="bg-gradient-to-br from-silver/20 to-white p-6 md:p-8 rounded-lg shadow-lg hover:shadow-2xl border-2 border-silver/30 hover:border-steel-blue transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 group hover:ring-4 hover:ring-steel-blue/20">
+                <h3 className="text-lg md:text-xl font-heading font-bold mb-3 text-navy">General Admission</h3>
                 <div className="text-3xl md:text-4xl font-heading font-bold text-steel-blue mb-6">$100</div>
                 <a 
                   href="https://buy.stripe.com/dRm3cw0779w34OKdoxfw400"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full bg-steel-blue hover:bg-steel-blue/90 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg transition text-center text-sm md:text-base"
+                  className="block w-full bg-steel-blue hover:bg-steel-blue/90 active:bg-steel-blue/80 text-white font-bold py-3 md:py-3 px-4 md:px-6 rounded-lg transition-all duration-300 text-center text-sm md:text-base min-h-[44px] flex items-center justify-center hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Buy Ticket
                 </a>
               </div>
-              <div className="bg-gradient-to-br from-navy to-steel-blue p-6 md:p-8 rounded-lg shadow-xl text-white hover:scale-[1.02] transition group hover:shadow-2xl hover:ring-4 hover:ring-steel-blue/30">
+              <div className="bg-gradient-to-br from-navy to-steel-blue p-6 md:p-8 rounded-lg shadow-lg text-white hover:shadow-2xl transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 group hover:ring-4 hover:ring-steel-blue/30">
                 <h3 className="text-lg md:text-xl font-heading font-bold mb-3">VIP Ticket</h3>
                 <div className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">$150</div>
                 <a 
                   href="https://buy.stripe.com/bJe14o5rr9w31Cybgpfw402"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full bg-white hover:bg-silver text-navy font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg transition text-center text-sm md:text-base"
+                  className="block w-full bg-white hover:bg-silver/90 active:bg-silver/80 text-navy font-bold py-3 md:py-3 px-4 md:px-6 rounded-lg transition-all duration-300 text-center text-sm md:text-base min-h-[44px] flex items-center justify-center hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Buy Ticket
                 </a>
@@ -251,21 +443,50 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Section Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
+
       {/* Attendee Breakdown Section */}
-      <section className="py-16 md:py-32 bg-white">
+      <section className="py-16 md:py-32 bg-gradient-to-b from-white to-steel-blue/5">
         <div className="container mx-auto px-4 max-w-6xl">
           <SectionWrapper>
-            <div className="max-w-4xl mx-auto text-center">
-              <p className="text-base md:text-lg leading-relaxed text-gray-700">
-                125 guests total – 45% Defense Leaders, 35% Corporate & Sports, 20% Nonprofit & Media. Sectors represented include Defense, Sports, Tech, Policy, Innovation, Media, Finance, Law, and Education.
-              </p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12 text-navy tracking-tight">Attendee Breakdown</h2>
+            <div className="max-w-5xl mx-auto">
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-white p-6 rounded-lg shadow-md border border-silver/30 text-center">
+                  <div className="text-4xl font-heading font-bold text-steel-blue mb-2">45%</div>
+                  <p className="text-sm md:text-base font-semibold text-navy mb-1">Defense Leaders</p>
+                  <p className="text-xs text-gray-600">56 guests</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg shadow-md border border-silver/30 text-center">
+                  <div className="text-4xl font-heading font-bold text-steel-blue mb-2">35%</div>
+                  <p className="text-sm md:text-base font-semibold text-navy mb-1">Corporate & Sports</p>
+                  <p className="text-xs text-gray-600">44 guests</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg shadow-md border border-silver/30 text-center">
+                  <div className="text-4xl font-heading font-bold text-steel-blue mb-2">20%</div>
+                  <p className="text-sm md:text-base font-semibold text-navy mb-1">Nonprofit & Media</p>
+                  <p className="text-xs text-gray-600">25 guests</p>
+                </div>
+              </div>
+              <div className="text-center">
+                <p className="text-base md:text-lg leading-relaxed text-gray-700 mb-4">
+                  <span className="font-semibold text-navy">125 guests total</span>
+                </p>
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  Sectors represented include Defense, Sports, Tech, Policy, Innovation, Media, Finance, Law, and Education.
+                </p>
+              </div>
             </div>
           </SectionWrapper>
         </div>
       </section>
 
+      {/* Section Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
+
       {/* Sponsors Section */}
-      <section ref={sponsorsRef} className="py-16 md:py-32 bg-gradient-to-b from-white to-steel-blue/5">
+      <section ref={sponsorsRef} className="py-16 md:py-32 bg-gradient-to-b from-steel-blue/5 to-white">
         <div className="container mx-auto px-4 max-w-6xl">
           <SectionWrapper>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-16 text-navy tracking-tight">Sponsorship Opportunities</h2>
@@ -284,7 +505,7 @@ export default function Home() {
                 return (
                   <div 
                     key={idx} 
-                    className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition border-2 border-silver/30 hover:border-steel-blue"
+                    className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border-2 border-silver/30 hover:border-steel-blue hover:-translate-y-1"
                   >
                     <h3 className="text-xl font-heading font-bold text-navy mb-2">{sponsor.tier}</h3>
                     <div className="text-3xl font-heading font-bold text-steel-blue mb-4">{sponsor.amount}</div>
@@ -315,7 +536,7 @@ export default function Home() {
                   return (
                     <div 
                       key={idx}
-                      className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition border-2 border-silver/30 hover:border-steel-blue text-center"
+                      className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border-2 border-silver/30 hover:border-steel-blue text-center hover:-translate-y-1"
                     >
                       <div className="text-2xl font-heading font-bold text-steel-blue">{level.amount}</div>
                     </div>
@@ -327,12 +548,15 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Section Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
+
       {/* Honorees Section */}
       <section ref={honoreesRef} className="py-16 md:py-32 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <SectionWrapper>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-12 text-navy tracking-tight">Honorees & Speakers</h2>
-            <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-silver/30 hover:border-steel-blue/50">
               <div className="relative">
                 <Image 
                   src="/rev-dr-arlester-brown.jpeg" 
@@ -348,7 +572,7 @@ export default function Home() {
                 {!showBio && (
                   <button
                     onClick={() => setShowBio(true)}
-                    className="text-steel-blue hover:text-navy font-semibold underline transition"
+                    className="text-steel-blue hover:text-navy active:text-steel-blue/80 font-semibold underline transition-all duration-300 min-h-[44px] px-2"
                   >
                     Click to read more
                   </button>
@@ -387,7 +611,7 @@ export default function Home() {
                     </div>
                     <button
                       onClick={() => setShowBio(false)}
-                      className="text-steel-blue hover:text-navy font-semibold underline transition mt-4"
+                      className="text-steel-blue hover:text-navy active:text-steel-blue/80 font-semibold underline transition-all duration-300 mt-4 min-h-[44px] px-2"
                     >
                       Show less
                     </button>
@@ -399,6 +623,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Section Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
+
       {/* Award Categories Section */}
       <section className="py-16 md:py-32 bg-gradient-to-b from-white to-silver/10">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -406,29 +633,75 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-12 text-navy tracking-tight">Award Categories (Forthcoming)</h2>
             <div className="max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
-                  <p className="font-heading font-semibold text-navy">Diplomacy Award</p>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg border border-silver/30 hover:border-steel-blue/50 transition-all duration-300 group">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-10 h-10 bg-steel-blue/10 rounded-full flex items-center justify-center group-hover:bg-steel-blue/20 transition-colors">
+                      <svg className="w-5 h-5 text-steel-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <p className="font-heading font-semibold text-navy">Diplomacy Award</p>
+                  </div>
                 </div>
-                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
-                  <p className="font-heading font-semibold text-navy">Corporate-Sponsor Service Award</p>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg border border-silver/30 hover:border-steel-blue/50 transition-all duration-300 group">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-10 h-10 bg-steel-blue/10 rounded-full flex items-center justify-center group-hover:bg-steel-blue/20 transition-colors">
+                      <svg className="w-5 h-5 text-steel-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                    </div>
+                    <p className="font-heading font-semibold text-navy">Corporate-Sponsor Service Award</p>
+                  </div>
                 </div>
-                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
-                  <p className="font-heading font-semibold text-navy">Host City Award</p>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg border border-silver/30 hover:border-steel-blue/50 transition-all duration-300 group">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-10 h-10 bg-steel-blue/10 rounded-full flex items-center justify-center group-hover:bg-steel-blue/20 transition-colors">
+                      <svg className="w-5 h-5 text-steel-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </div>
+                    <p className="font-heading font-semibold text-navy">Host City Award</p>
+                  </div>
                 </div>
-                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
-                  <p className="font-heading font-semibold text-navy">Military Academy Recognition</p>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg border border-silver/30 hover:border-steel-blue/50 transition-all duration-300 group">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-10 h-10 bg-steel-blue/10 rounded-full flex items-center justify-center group-hover:bg-steel-blue/20 transition-colors">
+                      <svg className="w-5 h-5 text-steel-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                    </div>
+                    <p className="font-heading font-semibold text-navy">Military Academy Recognition</p>
+                  </div>
                 </div>
-                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
-                  <p className="font-heading font-semibold text-navy">Legacy in Service Award</p>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg border border-silver/30 hover:border-steel-blue/50 transition-all duration-300 group">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-10 h-10 bg-steel-blue/10 rounded-full flex items-center justify-center group-hover:bg-steel-blue/20 transition-colors">
+                      <svg className="w-5 h-5 text-steel-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                      </svg>
+                    </div>
+                    <p className="font-heading font-semibold text-navy">Legacy in Service Award</p>
+                  </div>
                 </div>
-                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-silver/30">
-                  <p className="font-heading font-semibold text-navy">Wellness & Resilience Highlight</p>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg border border-silver/30 hover:border-steel-blue/50 transition-all duration-300 group">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-10 h-10 bg-steel-blue/10 rounded-full flex items-center justify-center group-hover:bg-steel-blue/20 transition-colors">
+                      <svg className="w-5 h-5 text-steel-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    </div>
+                    <p className="font-heading font-semibold text-navy">Wellness & Resilience Highlight</p>
+                  </div>
                 </div>
               </div>
             </div>
           </SectionWrapper>
         </div>
       </section>
+
+      {/* Section Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
 
       {/* Reception Circle Section */}
       <section ref={receptionRef} className="py-16 md:py-32 bg-gradient-to-br from-steel-blue/10 via-steel-blue/5 to-navy/10 text-navy relative overflow-hidden">
@@ -448,7 +721,7 @@ export default function Home() {
               </p>
               <a 
                 href="mailto:inclusivesecuritycollectiveinitiative@isciaccess.org?subject=Reception Circle Inquiry"
-                className="inline-block bg-steel-blue hover:bg-steel-blue/90 text-white font-bold py-4 px-12 rounded-lg transition transform hover:scale-105 shadow-xl uppercase tracking-wide"
+                className="inline-block bg-steel-blue hover:bg-steel-blue/90 active:bg-steel-blue/80 text-white font-bold py-4 px-12 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl hover:shadow-2xl uppercase tracking-wide min-h-[48px] flex items-center justify-center"
               >
                 Become a Partner
               </a>
@@ -456,6 +729,9 @@ export default function Home() {
           </SectionWrapper>
         </div>
       </section>
+
+      {/* Section Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
 
       {/* Meet the Founder Section */}
       <section className="py-16 md:py-32 bg-white">
@@ -504,7 +780,7 @@ export default function Home() {
                         </p>
                         <button
                           onClick={() => setShowFounderBio(true)}
-                          className="text-steel-blue hover:text-navy font-semibold underline transition mt-2"
+                          className="text-steel-blue hover:text-navy active:text-steel-blue/80 font-semibold underline transition-all duration-300 mt-2 min-h-[44px] px-2"
                         >
                           Read more
                         </button>
@@ -525,7 +801,7 @@ export default function Home() {
                         </p>
                         <button
                           onClick={() => setShowFounderBio(false)}
-                          className="text-steel-blue hover:text-navy font-semibold underline transition mt-2"
+                          className="text-steel-blue hover:text-navy active:text-steel-blue/80 font-semibold underline transition-all duration-300 mt-2 min-h-[44px] px-2"
                         >
                           Show less
                         </button>
@@ -538,6 +814,9 @@ export default function Home() {
           </SectionWrapper>
         </div>
       </section>
+
+      {/* Section Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
 
       {/* Contact / Footer */}
       <section ref={contactRef} className="py-16 md:py-32 bg-gradient-to-b from-navy to-black text-white">
