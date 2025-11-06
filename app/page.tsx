@@ -17,7 +17,6 @@ export default function Home() {
   const ticketsRef = useRef(null)
   const sponsorsRef = useRef(null)
   const honoreesRef = useRef(null)
-  const receptionRef = useRef(null)
   const contactRef = useRef(null)
 
   const scrollToSection = (ref: React.RefObject<HTMLElement>) => {
@@ -45,7 +44,6 @@ export default function Home() {
         { ref: ticketsRef, id: 'tickets' },
         { ref: sponsorsRef, id: 'sponsors' },
         { ref: honoreesRef, id: 'honorees' },
-        { ref: receptionRef, id: 'reception' },
         { ref: contactRef, id: 'contact' }
       ]
 
@@ -144,16 +142,6 @@ export default function Home() {
                 Sponsors
               </button>
               <button 
-                onClick={() => scrollToSection(receptionRef)} 
-                className={`transition font-nav font-medium text-sm tracking-wide uppercase py-2 px-1 border-b-2 ${
-                  activeSection === 'reception' 
-                    ? 'text-platinum border-platinum' 
-                    : 'text-white/90 hover:text-platinum border-transparent hover:border-platinum/50'
-                }`}
-              >
-                Reception Circle
-              </button>
-              <button 
                 onClick={() => scrollToSection(aboutRef)} 
                 className={`transition font-nav font-medium text-sm tracking-wide uppercase py-2 px-1 border-b-2 ${
                   activeSection === 'about' 
@@ -220,16 +208,6 @@ export default function Home() {
                   }`}
                 >
                   Sponsors
-                </button>
-                <button 
-                  onClick={() => scrollToSection(receptionRef)} 
-                  className={`text-left py-2 px-2 rounded transition min-h-[44px] ${
-                    activeSection === 'reception' 
-                      ? 'text-platinum bg-platinum/10 font-semibold' 
-                      : 'text-white/90 hover:text-platinum hover:bg-white/5'
-                  }`}
-                >
-                  Reception Circle
                 </button>
                 <button 
                   onClick={() => scrollToSection(aboutRef)} 
@@ -813,37 +791,6 @@ export default function Home() {
                   </ul>
                 </div>
               </div>
-            </div>
-          </SectionWrapper>
-        </div>
-      </section>
-
-      {/* Section Divider */}
-      <div className="h-[4px] w-full bg-gradient-to-r from-transparent via-[#cfd1d3]/50 to-transparent my-16 rounded-full"></div>
-
-      {/* Reception Circle Section */}
-      <section ref={receptionRef} className="py-16 md:py-20 bg-ivory text-navy relative overflow-hidden">
-        <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <SectionWrapper>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-center mb-8 text-navy tracking-wide section-title-accent sparkle-header">
-              Reception Circle
-            </h2>
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              <p className="text-lg leading-relaxed">
-                The Reception Circle is iSCI&apos;s exclusive network of legacy supporters and sponsors who help sustain 
-                the Celebration of Service™ Event Series through their commitment to advancing inclusive economic 
-                pathways and cultural diplomacy.
-              </p>
-              <p className="text-lg leading-relaxed">
-                Join this distinguished community and make a lasting impact on leadership development across 
-                the Defense Industrial Complex and creative sectors.
-              </p>
-              <a 
-                href="mailto:inclusivesecuritycollectiveinitiative@isciaccess.org?subject=Reception Circle Inquiry"
-                className="relative px-12 py-4 font-semibold tracking-wide text-[#0f172a] rounded-md shadow-md bg-gradient-to-r from-[#f3f3f4] via-[#d7d9dc] to-[#b9bbbe] hover:from-[#ffffff] hover:via-[#e2e3e4] hover:to-[#c4c5c7] border border-[#a7a9ac]/40 transition-all duration-300 hover:shadow-[0_0_10px_rgba(207,209,211,0.6)] active:scale-[0.97] uppercase min-h-[48px] flex items-center justify-center"
-              >
-                Become a Partner
-              </a>
             </div>
           </SectionWrapper>
         </div>
