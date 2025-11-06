@@ -451,45 +451,6 @@ export default function Home() {
       {/* Section Divider */}
       <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
 
-      {/* Attendee Breakdown Section */}
-      <section className="py-16 md:py-32 bg-gradient-to-b from-white to-steel-blue/5">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <SectionWrapper>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-center mb-8 md:mb-12 text-navy tracking-tight">Attendee Breakdown</h2>
-            <div className="max-w-5xl mx-auto">
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-white p-6 rounded-lg shadow-md border border-silver/30 text-center">
-                  <div className="text-4xl font-heading font-bold text-steel-blue mb-2">45%</div>
-                  <p className="text-sm md:text-base font-semibold text-navy mb-1">Defense Leaders</p>
-                  <p className="text-xs text-gray-600">56 guests</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-md border border-silver/30 text-center">
-                  <div className="text-4xl font-heading font-bold text-steel-blue mb-2">35%</div>
-                  <p className="text-sm md:text-base font-semibold text-navy mb-1">Corporate & Sports</p>
-                  <p className="text-xs text-gray-600">44 guests</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-md border border-silver/30 text-center">
-                  <div className="text-4xl font-heading font-bold text-steel-blue mb-2">20%</div>
-                  <p className="text-sm md:text-base font-semibold text-navy mb-1">Nonprofit & Media</p>
-                  <p className="text-xs text-gray-600">25 guests</p>
-                </div>
-              </div>
-              <div className="text-center">
-                <p className="text-base md:text-lg leading-relaxed text-gray-700 mb-4">
-                  <span className="font-semibold text-navy">125 guests total</span>
-                </p>
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                  Sectors represented include Defense, Sports, Tech, Policy, Innovation, Media, Finance, Law, and Education.
-                </p>
-              </div>
-            </div>
-          </SectionWrapper>
-        </div>
-      </section>
-
-      {/* Section Divider */}
-      <div className="h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
-
       {/* Sponsors Section */}
       <section ref={sponsorsRef} className="py-16 md:py-32 bg-gradient-to-b from-steel-blue/5 to-white">
         <div className="container mx-auto px-4 max-w-6xl">
