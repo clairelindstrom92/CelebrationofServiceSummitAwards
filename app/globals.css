@@ -8,14 +8,15 @@
   }
   
   body {
-    @apply bg-white text-navy;
+    @apply bg-ivory text-charcoal;
     font-weight: 400;
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em;
+    color: #0C1F36;
   }
 }
 
@@ -60,6 +61,57 @@
   height: 1px;
 }
 
+/* Gold divider for elegant sections */
+.gold-divider {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(197,166,74,0.3) 20%, 
+    rgba(197,166,74,0.6) 50%, 
+    rgba(197,166,74,0.3) 80%, 
+    transparent 100%
+  );
+  height: 1px;
+}
+
+/* Elegant decorative line with subtle gold accent */
+.section-title-accent {
+  position: relative;
+  display: inline-block;
+}
+
+.section-title-accent::before,
+.section-title-accent::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197,166,74,0.5), transparent);
+}
+
+.section-title-accent::before {
+  left: -60px;
+}
+
+.section-title-accent::after {
+  right: -60px;
+}
+
+@media (max-width: 768px) {
+  .section-title-accent::before,
+  .section-title-accent::after {
+    width: 20px;
+  }
+  
+  .section-title-accent::before {
+    left: -30px;
+  }
+  
+  .section-title-accent::after {
+    right: -30px;
+  }
+}
+
 /* Flag texture overlay */
 .flag-overlay {
   background-image: repeating-linear-gradient(
@@ -75,7 +127,7 @@
 .hero-bg {
   background-image: url('/background33.png');
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   position: relative;
 }
@@ -87,10 +139,191 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,31,63,0.6) 50%, rgba(0,0,0,0.5) 100%),
-    radial-gradient(ellipse at top, rgba(70,130,180,0.15) 0%, transparent 50%);
+  background: linear-gradient(180deg, rgba(12,31,54,0.9) 0%, rgba(12,31,54,0.85) 100%);
   pointer-events: none;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(197,166,74,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Sparkle effect for headers with gold gradient */
+.sparkle-header {
+  position: relative;
+  background: linear-gradient(135deg, #0C1F36 0%, #0C1F36 35%, #C5A64A 50%, #0C1F36 65%, #0C1F36 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #0C1F36;
+  filter: drop-shadow(0 2px 4px rgba(197,166,74,0.15));
+}
+
+/* Sparkle button effect with gold gradient */
+.sparkle-button {
+  position: relative;
+  overflow: hidden;
+  background: #C5A64A;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.sparkle-button:hover {
+  background: #8A6E2F;
+  box-shadow: 0 4px 12px rgba(197,166,74,0.4), 0 2px 4px rgba(197,166,74,0.2);
+  transform: translateY(-1px);
+}
+
+/* Enhanced section styling */
+.section-enhanced {
+  position: relative;
+}
+
+.section-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(197,166,74,0.5), transparent);
+}
+
+/* Elegant card styling */
+.elegant-card {
+  background: white;
+  border: 1px solid rgba(197,166,74,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+.elegant-card:hover {
+  border-color: rgba(197,166,74,0.4);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+/* Premium card for VIP/highlighted items */
+.premium-card {
+  background: linear-gradient(135deg, #0C1F36 0%, #1e3a8a 100%);
+  border: 2px solid rgba(197,166,74,0.3);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2), 0 0 0 1px rgba(197,166,74,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.premium-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(197,166,74,0.1), transparent);
+  animation: premiumShine 3s infinite;
+}
+
+@keyframes premiumShine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.premium-card:hover {
+  border-color: rgba(197,166,74,0.6);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(197,166,74,0.4), 0 0 30px rgba(197,166,74,0.2);
+  transform: translateY(-3px);
+}
+
+/* Timeline card styling */
+.timeline-card {
+  background: white;
+  border-top: 4px solid;
+  border-left: 1px solid rgba(197,166,74,0.15);
+  border-right: 1px solid rgba(197,166,74,0.15);
+  border-bottom: 1px solid rgba(197,166,74,0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.timeline-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(197,166,74,0.1) 0%, transparent 70%);
+  border-radius: 0 0 0 100%;
+}
+
+.timeline-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  border-top-width: 5px;
+}
+
+/* Content card with elegant borders */
+.content-card {
+  background: white;
+  border: 1px solid rgba(197,166,74,0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 2rem;
+  position: relative;
+}
+
+.content-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(197,166,74,0.3), rgba(197,166,74,0.6), rgba(197,166,74,0.3));
+  border-radius: 12px 12px 0 0;
+}
+
+/* Text content with better spacing */
+.elegant-text {
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+/* Warm-tone color grading for images */
+.image-warm-tone {
+  filter: sepia(10%) saturate(90%) brightness(98%) contrast(95%);
+}
+
+.image-warm-tone img {
+  filter: sepia(10%) saturate(90%) brightness(98%) contrast(95%);
+}
+
+/* Section divider enhancement */
+.section-divider-elegant {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, 
+    rgba(197,166,74,0.3) 0%, 
+    rgba(197,166,74,0.6) 50%, 
+    rgba(197,166,74,0.3) 100%
+  );
+  margin: 2.5rem 0;
+  border-radius: 9999px;
+  opacity: 0.8;
 }
 
 
