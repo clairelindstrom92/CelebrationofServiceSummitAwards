@@ -322,11 +322,6 @@ export default function Home() {
                 </p>
                 <div className="h-[1px] w-24 mx-auto bg-gradient-to-r from-transparent via-bordeaux to-transparent mt-3 opacity-60"></div>
               </div>
-              <div className="mt-6 space-y-2">
-                <p className="text-sm font-body text-white/90">Doors Open: 5:30 PM</p>
-                <p className="text-sm font-body text-white/90">Program: 6:00 PM – 7:30 PM</p>
-                <p className="text-sm font-body text-white/90">Networking Reception: 7:30 PM – 8:30 PM</p>
-              </div>
               <div className="gold-divider my-6 mx-auto max-w-md"></div>
             </div>
             <div className="gold-divider my-8 mx-auto max-w-md"></div>
@@ -335,7 +330,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               onClick={() => scrollToSection(ticketsRef)}
-              className="relative px-6 py-3 font-semibold tracking-wide text-[#0f172a] bg-gradient-to-r from-[#e8e9ea] via-[#d3d5d6] to-[#babcbc] hover:from-[#f5f5f6] hover:to-[#c7c9ca] border border-[#b5b7b9]/40 shadow-[0_3px_8px_rgba(0,0,0,0.1)] rounded-md transition-all duration-300 active:scale-[0.97] uppercase min-h-[48px]"
+              className="relative px-12 py-6 text-lg md:text-xl font-semibold tracking-wide text-[#0f172a] bg-gradient-to-r from-[#e8e9ea] via-[#d3d5d6] to-[#babcbc] hover:from-[#f5f5f6] hover:to-[#c7c9ca] border border-[#b5b7b9]/40 shadow-[0_3px_8px_rgba(0,0,0,0.1)] rounded-md transition-all duration-300 active:scale-[0.97] uppercase min-h-[64px] md:min-h-[72px]"
             >
               Purchase Your Ticket
             </motion.button>
@@ -371,6 +366,72 @@ export default function Home() {
       {/* Section Divider */}
       <div className="h-[4px] w-full bg-gradient-to-r from-transparent via-[#cfd1d3]/50 to-transparent my-16 rounded-full"></div>
 
+      {/* More About the Venue Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-[#f9f9f6] via-white to-[#f1f2f3] relative overflow-hidden">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <SectionWrapper>
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-center mb-12 md:mb-16 text-navy tracking-wide">
+              More about Venue...
+            </h2>
+            
+            {/* Asymmetrical Layout - Large image on left, text flowing on right */}
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
+              {/* Image Column - Left Side */}
+              <div className="md:sticky md:top-24">
+                <div className="relative overflow-hidden shadow-2xl rounded-lg">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <Image
+                      src="/aboutthevenue.png"
+                      alt="Army & Navy Country Club Interior"
+                      width={500}
+                      height={375}
+                      className="w-full h-full object-cover object-top scale-105"
+                      style={{ objectPosition: 'center top' }}
+                    />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                    <p className="text-white text-sm font-medium">Army & Navy Country Club Interior</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Text Column - Right Side */}
+              <div className="space-y-6 md:space-y-8">
+                <div className="border-l-4 border-platinum pl-6">
+                  <h3 className="text-2xl md:text-3xl font-serif font-bold text-navy mb-4 tracking-tight">
+                    About the Army & Navy Country Club
+                  </h3>
+                </div>
+                
+                <div className="space-y-5 text-base md:text-lg leading-relaxed text-gray-700">
+                  <p className="font-medium text-gray-800">
+                    Established in 1924, the Army & Navy Country Club in Arlington, VA, is one of the nation&apos;s most historic private clubs, serving leaders from defense, diplomacy, and public service.
+                  </p>
+                  <p>
+                    Its facilities host senior-level gatherings across Washington D.C., including Department of Defense, NATO, and service academy events.
+                  </p>
+                  <div className="pt-4 border-t border-platinum/30">
+                    <p className="italic text-gray-600">
+                      The Club&apos;s tradition of excellence mirrors the mission of the Celebration of Service™ Event Series—to honor legacy, uplift current commitments, and strengthen future leadership through connection and reflection.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Decorative element */}
+                <div className="flex items-center gap-4 pt-4">
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-platinum to-transparent"></div>
+                  <div className="w-2 h-2 rounded-full bg-platinum"></div>
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-platinum to-transparent"></div>
+                </div>
+              </div>
+            </div>
+          </SectionWrapper>
+        </div>
+      </section>
+
+      {/* Section Divider */}
+      <div className="h-[4px] w-full bg-gradient-to-r from-transparent via-[#cfd1d3]/50 to-transparent my-16 rounded-full"></div>
+
       {/* Event Run of Show Section */}
       <section ref={scheduleRef} className="py-20 md:py-28 bg-[#f1f2f3]">
         <div className="container mx-auto px-6 max-w-6xl">
@@ -396,57 +457,6 @@ export default function Home() {
               <div className="timeline-card border-navy p-6 md:p-8 rounded-2xl shadow-lg">
                 <div className="text-lg font-heading font-bold text-navy mb-3">7:30 PM – 8:30 PM</div>
                 <h3 className="text-base font-heading font-semibold mb-2 md:mb-3 text-navy">Networking Reception</h3>
-              </div>
-            </div>
-          </SectionWrapper>
-        </div>
-      </section>
-
-      {/* Section Divider */}
-      <div className="h-[4px] w-full bg-gradient-to-r from-transparent via-[#cfd1d3]/50 to-transparent my-16 rounded-full"></div>
-
-      {/* More About the Venue Section */}
-      <section className="py-16 md:py-20 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <SectionWrapper>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-center mb-8 text-navy tracking-wide section-title-accent sparkle-header">
-              About the Army & Navy Country Club
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="elegant-card p-8 rounded-2xl">
-                <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
-                  <div className="flex-shrink-0 w-full md:w-64">
-                    <div className="rounded-lg overflow-hidden shadow-xl border-2 border-platinum/30 ring-2 ring-platinum/10 image-warm-tone">
-                      <Image
-                        src="/aboutthevenue.png"
-                        alt="Army & Navy Country Club Interior"
-                        width={256}
-                        height={192}
-                        className="w-full h-auto"
-                      />
-                    </div>
-                    {/* Decorative venue image - similar to flyer */}
-                    <div className="mt-4 hidden md:block">
-                      <div className="relative w-full rounded-lg overflow-hidden shadow-lg border-2 border-platinum/30 ring-1 ring-platinum/10 image-warm-tone">
-                        <Image
-                          src="/background33.png"
-                          alt="Army & Navy Country Club"
-                          width={256}
-                          height={160}
-                          className="w-full h-auto object-cover"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex-1 text-base leading-relaxed space-y-4 md:space-y-6 elegant-text">
-                    <p>
-                      Established in 1924, the Army & Navy Country Club in Arlington, VA, is one of the nation&apos;s most historic private clubs, serving leaders from defense, diplomacy, and public service. Its facilities host senior-level gatherings across Washington D.C., including Department of Defense, NATO, and service academy events.
-                    </p>
-                    <p>
-                      The Club&apos;s tradition of excellence mirrors the mission of the Celebration of Service™ Event Series—to honor legacy, uplift current commitments, and strengthen future leadership through connection and reflection.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </SectionWrapper>
@@ -786,7 +796,6 @@ export default function Home() {
                   <ul className="space-y-3 text-base text-gray-700">
                     <li>• Army and Navy Country Club</li>
                     <li>• Zipped Shut Collective LLC</li>
-                    <li>• ANCC Member Host: LTC (Ret.) Terron Sims</li>
                     <li>• More Coming…</li>
                   </ul>
                 </div>
