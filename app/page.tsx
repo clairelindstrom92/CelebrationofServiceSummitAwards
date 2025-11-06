@@ -284,17 +284,15 @@ export default function Home() {
                 return (
                   <div 
                     key={idx} 
-                    onClick={() => window.location.href = mailtoLink}
-                    className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition border-2 border-silver/30 hover:border-steel-blue cursor-pointer hover:scale-[1.03]"
+                    className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition border-2 border-silver/30 hover:border-steel-blue"
                   >
                     <h3 className="text-xl font-heading font-bold text-navy mb-2">{sponsor.tier}</h3>
                     <div className="text-3xl font-heading font-bold text-steel-blue mb-4">{sponsor.amount}</div>
-                    <ul className="space-y-1 mb-4">
+                    <ul className="space-y-1">
                       {sponsor.benefits.map((benefit, i) => (
                         <li key={i} className="text-sm text-gray-600">• {benefit}</li>
                       ))}
                     </ul>
-                    <p className="text-xs text-steel-blue font-semibold mt-4">Click to inquire</p>
                   </div>
                 );
               })}
@@ -317,11 +315,9 @@ export default function Home() {
                   return (
                     <div 
                       key={idx}
-                      onClick={() => window.location.href = mailtoLink}
-                      className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition border-2 border-silver/30 hover:border-steel-blue cursor-pointer hover:scale-[1.02] text-center"
+                      className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition border-2 border-silver/30 hover:border-steel-blue text-center"
                     >
-                      <div className="text-2xl font-heading font-bold text-steel-blue mb-2">{level.amount}</div>
-                      <p className="text-xs text-steel-blue font-semibold mt-2">Click to inquire</p>
+                      <div className="text-2xl font-heading font-bold text-steel-blue">{level.amount}</div>
                     </div>
                   );
                 })}
