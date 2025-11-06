@@ -299,12 +299,17 @@ export default function Home() {
                 </svg>
                 <p className="text-sm sm:text-base md:text-lg font-body font-medium">Tuesday, November 11, 2025</p>
               </div>
-              <div className="flex items-center justify-center gap-2 text-white/95 drop-shadow-md">
-                <svg className="w-4 h-4 text-silver/70 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <p className="text-sm sm:text-base md:text-lg font-body font-medium">Army & Navy Country Club • Arlington, VA</p>
+              <div className="flex flex-col items-center justify-center gap-2 text-white/95 drop-shadow-md">
+                <div className="flex items-center justify-center">
+                  <Image 
+                    src="/armynavy-logo.svg" 
+                    alt="Army & Navy Country Club" 
+                    width={250} 
+                    height={25}
+                    className="h-6 md:h-8 w-auto brightness-0 invert"
+                  />
+                </div>
+                <p className="text-sm sm:text-base md:text-lg font-body font-medium">Arlington, VA</p>
               </div>
               <div className="flex items-center justify-center gap-2 text-white/90 drop-shadow-md">
                 <svg className="w-4 h-4 text-silver/70 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
