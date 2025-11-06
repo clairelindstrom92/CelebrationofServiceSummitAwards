@@ -494,70 +494,92 @@ export default function Home() {
 
       {/* Honorees Section */}
       <section ref={honoreesRef} className="py-16 md:py-32 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-4 max-w-6xl">
           <SectionWrapper>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 md:mb-12 text-navy tracking-tight">Honorees & Speakers</h2>
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-silver/30 hover:border-steel-blue/50">
-              <div className="relative">
-                <Image 
-                  src="/rev-dr-arlester-brown.jpeg" 
-                  alt="Rev. Dr. Arlester Brown" 
-                  width={600} 
-                  height={600}
-                  className="w-full h-64 md:h-80 object-cover"
-                />
-              </div>
-              <div className="p-6 md:p-8">
-                <h3 className="text-2xl md:text-3xl font-heading font-bold mb-2 text-navy">Rev. Dr. Arlester Brown</h3>
-                <p className="text-base md:text-lg text-gray-600 mb-4">World War II Veteran</p>
-                {!showBio && (
-                  <button
-                    onClick={() => setShowBio(true)}
-                    className="text-steel-blue hover:text-navy active:text-steel-blue/80 font-semibold underline transition-all duration-300 min-h-[44px] px-2"
-                  >
-                    Click to read more
-                  </button>
-                )}
-                {showBio && (
-                  <div className="mt-4 space-y-4 text-sm md:text-base text-gray-700 leading-relaxed">
-                    <div>
-                      <h4 className="font-bold text-lg mb-2">LIFE AND EDUCATION:</h4>
-                      <p>On April 1, 1924, Arlester Brown was born in Spring Lake, Louisiana. In his early age, a famine came upon the state of Louisiana. Many people became ill and also died. His family migrated to many areas in the South. His family did a lot of share cropping with many families in the corn fields. He spent a great deal of my childhood life in Chatham and Shreveport, Louisiana. He was was reared by his grandparents John Brown and Rosie Wilson Brown and my mother (with my sisters and brothers). Arlester moved back to Homer, Louisiana then onto Minden, Louisiana. His mother worked in a restaurant to feed the family. The entire family also worked on a farm outside Minden, Louisiana to have some income and care for the family. After living in Minden, Louisiana, the family moved to Sibling, Louisiana. At the age of 12 years-old, he lived with his grandmother in Grambling, Louisiana and went to elementary school. He later attended junior high and high school on the campus of Grambling College.</p>
-                      <p className="mt-2">While living in Grambling, Louisiana, Coach Eddie Robinson (undefeated football team in history) made a recommendation for him to play football. Coach Eddie Robinson shared with Arlester&apos;s grandmother that he would make a good football player at Grambling College. Life was fun and he enjoyed playing with his best friend – &quot;PAUL TANK YOUNGER&quot;! It was the happiest days of his life to be with a future LEDGEND! He loved Coach Eddie Robinson and he was treated like he was his son.</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-2">DRAFTED IN THE ARMY:</h4>
-                      <p>At age 18 (6 July 1942), Arlester was drafted in the U.S. Army from Grambling, Louisiana. He joined the Army in Ruston, Louisiana and also in Shreveport, Louisiana. He received his booth camp training at Camp Ellis in Peoria, Illinois where he was a laundry technician. He was later shipped to New York to embark on a ship. He sailed 14 days across the Atlantic Ocean with airplanes and battleships who protected them. Germany had many attacks and plans to attack ships sailing across the Atlantic Ocean. He and his shipmates sailed to South Hampton, England. He was also deployed in various locations across Saint Lo, France, Normandy, France, Belgium, Holland and Rhineland, Germany and Arkin, Germany. He worked as a Quartermaster engineer with the 599th Quartermaster Laundry Company which was known for its involvement in the historical cleaning and supply for the front line. The supply line was formed by an all Black troop who worked tirelessly to keep the troops clothing and cleaning supplies in line while the soldiers were in and out of combat during World War II. He also assisted in special attention in giving the soldiers personal hygiene and clean clothing. He along with other black soldiers were treated with more respect and equality in Europe than home in a highly segregated American culture.</p>
-                      <p className="mt-2">While in Germany, he was injured and also hit in the face by an unmanned buzz bomb. It exploded close to him and a shrapnel struck my face. He was sent to Camp Shelby in Mississippi, and later sent to Tuscaloosa, Alabama for military surgery and care. He was also sent to a camp in New Jersey for rehabilitation and then sent back to Camp Shelby.</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-2">DISCHARGE FROM THE ARMY:</h4>
-                      <p>Arlester was discharged on December 28, 1945 from the Army. He received numerous military awards such as ATO Medal, EAMETO Medal, Good Conduct Award, World War II Medal and Victory Medal. He was transported by train to Shreveport, Louisiana and returned to live with his mother, sisters and brothers.</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-2">EDUCATION AFTER THE WAR:</h4>
-                      <p>After Arlester returned home from the Army. He visited the registrar&apos;s office at Grambling College and spoke with an officer about the GI Bill of Rights. The GI Bill of Rights allowed Veterans to receive their education from the U.S. Government. The Bill allowed him to finished high school and receive my B.S. degree. Today, he has earned a B.S. Degree in Education from Grambling State University (Grambling College). He also became a principal at the CATO Parish in Shreveport, LA and a clergy person (missionary). He also studied and received two Master Degrees: one in Education from Texas Southern University and another one in Divinity from Howard University School of Religion and a Doctorate of Divinity from Universal Life Church. He left the field of Education to seek a clergyman life. He felt if he would engage full time in the ministry he could teach many children a better life. During his first summer at Wesley Theological Seminary, his too his entire class went to the Canal Zone for a summer. He also conducted a missionary trip and journey for two groups to Israel and also South Africa as well.</p>
-                      <p className="mt-2">Today, he is a retired clergyman who has ministered in many churches in Louisiana and the Washington District area. He also served as a Superintendent in the VA, DC and Maryland area, Advocate for 100 Men March in Washington, DC, Employed by Washington DC Kennedy Center. In addition, He supported the DC Counsel Men Group and the action for &quot;Get Crime Out of DC&quot;. He pastored in DC at Wesley Theological Seminary Campus, North DC Church (Integrated Church for 3 years), and supported Howard University School of Divinity and CME Churches. At Howard University, he gives Dr. James D. Tyms credit for his outstanding student advisory, discipline, coaching, mentoring assistant with his Masters thesis. At Howard University, he networked with the students and faculty, attended conferences and worship at the chapel. This helped Arlester provide good ministry and service to the community. Arlester has received numerous awards and recognition for my outstanding works in bringing many to Christ.</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-2">RETURN TO NORMANDY, FRANCE:</h4>
-                      <p>Arlester had the honor and pleasure to return to Normandy, France via the Best Defense Foundation (BDF) organization from California. I was accompanied by his caregiver and Executive Assistant, Ms. Elma Williams-Coleman.</p>
-                      <p className="mt-2">The trip there and back was quite an experience and he truly enjoyed it. He flew from Washington, DC to Atlanta, GA via Delta-1 Airline (sponsors) on July 29, 2023. He was also flown with 44 other World War II Veterans. They were greeted by the Delta Airline&apos;s sponsors, host, staff and employees with a kick-off welcome and celebration. Also Michelin Corporation was also a sponsor. The next morning the Veterans and team were flown by Delta Airline once again, first class to Normandy, France. The next day the Veterans were greeted with awesome cheers by many Frenchmen. What a way to bring Veterans back home!!!!! While in France he visited the Omaha Beach, the French and German Cemetery, Catholic Church, City Parade, and nightly welcome celebrations by all branches of the Government. When he walked the grounds of the cemetery and saw all of the markers, the HOLY SPIRIT flashed across his mind and heart he began to leave his mark with singing &quot;Amazing Grace&quot;! The Normandy, France trip really helped him to answer some questions that I had over the years. Normandy, France will be forever in my heart and my service in World War III will never be forgotten. Arlester received the French of Legion Award (one of France&apos;s highest Military Awards) from President Emmanuel Macron during the 80th D-Day Celebration in Normandy, France (June 2024).</p>
-                    </div>
-                    <div className="pt-4 border-t border-gray-200">
-                      <p className="font-semibold">SALUTE! God Almighty was his co-pilot while in the military and during his entire life.</p>
-                      <p className="mt-2 italic">Arlester&apos;s favorite quote is: &quot;I am blessed to be a blessing&quot;.</p>
-                      <p className="mt-4">With love and gratitude,</p>
-                      <p className="font-bold">Rev. Dr. Arlester Brown</p>
-                    </div>
-                    <button
-                      onClick={() => setShowBio(false)}
-                      className="text-steel-blue hover:text-navy active:text-steel-blue/80 font-semibold underline transition-all duration-300 mt-4 min-h-[44px] px-2"
-                    >
-                      Show less
-                    </button>
+            <div className="max-w-4xl mx-auto">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+                {/* Image */}
+                <div className="flex-shrink-0">
+                  <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl border-4 border-steel-blue/30">
+                    <Image
+                      src="/rev-dr-arlester-brown.jpeg"
+                      alt="Rev. Dr. Arlester Brown"
+                      width={224}
+                      height={224}
+                      className="w-full h-full object-cover object-center"
+                    />
                   </div>
-                )}
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1 text-center md:text-left space-y-4">
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-heading font-bold text-navy mb-2">
+                      Rev. Dr. Arlester Brown
+                    </h3>
+                    <p className="text-lg md:text-xl font-semibold text-steel-blue mb-4">
+                      World War II Veteran
+                    </p>
+                  </div>
+                  
+                  <div className="text-base md:text-lg leading-relaxed text-gray-700 space-y-4">
+                    {!showBio ? (
+                      <>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">LIFE AND EDUCATION:</h4>
+                          <p>On April 1, 1924, Arlester Brown was born in Spring Lake, Louisiana. In his early age, a famine came upon the state of Louisiana. Many people became ill and also died. His family migrated to many areas in the South. His family did a lot of share cropping with many families in the corn fields. He spent a great deal of my childhood life in Chatham and Shreveport, Louisiana. He was was reared by his grandparents John Brown and Rosie Wilson Brown and my mother (with my sisters and brothers). Arlester moved back to Homer, Louisiana then onto Minden, Louisiana. His mother worked in a restaurant to feed the family. The entire family also worked on a farm outside Minden, Louisiana to have some income and care for the family. After living in Minden, Louisiana, the family moved to Sibling, Louisiana. At the age of 12 years-old, he lived with his grandmother in Grambling, Louisiana and went to elementary school. He later attended junior high and high school on the campus of Grambling College.</p>
+                          <p className="mt-2">While living in Grambling, Louisiana, Coach Eddie Robinson (undefeated football team in history) made a recommendation for him to play football. Coach Eddie Robinson shared with Arlester&apos;s grandmother that he would make a good football player at Grambling College. Life was fun and he enjoyed playing with his best friend – &quot;PAUL TANK YOUNGER&quot;! It was the happiest days of his life to be with a future LEDGEND! He loved Coach Eddie Robinson and he was treated like he was his son.</p>
+                        </div>
+                        <button
+                          onClick={() => setShowBio(true)}
+                          className="text-steel-blue hover:text-navy active:text-steel-blue/80 font-semibold underline transition-all duration-300 mt-2 min-h-[44px] px-2"
+                        >
+                          Read more
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">LIFE AND EDUCATION:</h4>
+                          <p>On April 1, 1924, Arlester Brown was born in Spring Lake, Louisiana. In his early age, a famine came upon the state of Louisiana. Many people became ill and also died. His family migrated to many areas in the South. His family did a lot of share cropping with many families in the corn fields. He spent a great deal of my childhood life in Chatham and Shreveport, Louisiana. He was was reared by his grandparents John Brown and Rosie Wilson Brown and my mother (with my sisters and brothers). Arlester moved back to Homer, Louisiana then onto Minden, Louisiana. His mother worked in a restaurant to feed the family. The entire family also worked on a farm outside Minden, Louisiana to have some income and care for the family. After living in Minden, Louisiana, the family moved to Sibling, Louisiana. At the age of 12 years-old, he lived with his grandmother in Grambling, Louisiana and went to elementary school. He later attended junior high and high school on the campus of Grambling College.</p>
+                          <p className="mt-2">While living in Grambling, Louisiana, Coach Eddie Robinson (undefeated football team in history) made a recommendation for him to play football. Coach Eddie Robinson shared with Arlester&apos;s grandmother that he would make a good football player at Grambling College. Life was fun and he enjoyed playing with his best friend – &quot;PAUL TANK YOUNGER&quot;! It was the happiest days of his life to be with a future LEDGEND! He loved Coach Eddie Robinson and he was treated like he was his son.</p>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">DRAFTED IN THE ARMY:</h4>
+                          <p>At age 18 (6 July 1942), Arlester was drafted in the U.S. Army from Grambling, Louisiana. He joined the Army in Ruston, Louisiana and also in Shreveport, Louisiana. He received his booth camp training at Camp Ellis in Peoria, Illinois where he was a laundry technician. He was later shipped to New York to embark on a ship. He sailed 14 days across the Atlantic Ocean with airplanes and battleships who protected them. Germany had many attacks and plans to attack ships sailing across the Atlantic Ocean. He and his shipmates sailed to South Hampton, England. He was also deployed in various locations across Saint Lo, France, Normandy, France, Belgium, Holland and Rhineland, Germany and Arkin, Germany. He worked as a Quartermaster engineer with the 599th Quartermaster Laundry Company which was known for its involvement in the historical cleaning and supply for the front line. The supply line was formed by an all Black troop who worked tirelessly to keep the troops clothing and cleaning supplies in line while the soldiers were in and out of combat during World War II. He also assisted in special attention in giving the soldiers personal hygiene and clean clothing. He along with other black soldiers were treated with more respect and equality in Europe than home in a highly segregated American culture.</p>
+                          <p className="mt-2">While in Germany, he was injured and also hit in the face by an unmanned buzz bomb. It exploded close to him and a shrapnel struck my face. He was sent to Camp Shelby in Mississippi, and later sent to Tuscaloosa, Alabama for military surgery and care. He was also sent to a camp in New Jersey for rehabilitation and then sent back to Camp Shelby.</p>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">DISCHARGE FROM THE ARMY:</h4>
+                          <p>Arlester was discharged on December 28, 1945 from the Army. He received numerous military awards such as ATO Medal, EAMETO Medal, Good Conduct Award, World War II Medal and Victory Medal. He was transported by train to Shreveport, Louisiana and returned to live with his mother, sisters and brothers.</p>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">EDUCATION AFTER THE WAR:</h4>
+                          <p>After Arlester returned home from the Army. He visited the registrar&apos;s office at Grambling College and spoke with an officer about the GI Bill of Rights. The GI Bill of Rights allowed Veterans to receive their education from the U.S. Government. The Bill allowed him to finished high school and receive my B.S. degree. Today, he has earned a B.S. Degree in Education from Grambling State University (Grambling College). He also became a principal at the CATO Parish in Shreveport, LA and a clergy person (missionary). He also studied and received two Master Degrees: one in Education from Texas Southern University and another one in Divinity from Howard University School of Religion and a Doctorate of Divinity from Universal Life Church. He left the field of Education to seek a clergyman life. He felt if he would engage full time in the ministry he could teach many children a better life. During his first summer at Wesley Theological Seminary, his too his entire class went to the Canal Zone for a summer. He also conducted a missionary trip and journey for two groups to Israel and also South Africa as well.</p>
+                          <p className="mt-2">Today, he is a retired clergyman who has ministered in many churches in Louisiana and the Washington District area. He also served as a Superintendent in the VA, DC and Maryland area, Advocate for 100 Men March in Washington, DC, Employed by Washington DC Kennedy Center. In addition, He supported the DC Counsel Men Group and the action for &quot;Get Crime Out of DC&quot;. He pastored in DC at Wesley Theological Seminary Campus, North DC Church (Integrated Church for 3 years), and supported Howard University School of Divinity and CME Churches. At Howard University, he gives Dr. James D. Tyms credit for his outstanding student advisory, discipline, coaching, mentoring assistant with his Masters thesis. At Howard University, he networked with the students and faculty, attended conferences and worship at the chapel. This helped Arlester provide good ministry and service to the community. Arlester has received numerous awards and recognition for my outstanding works in bringing many to Christ.</p>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">RETURN TO NORMANDY, FRANCE:</h4>
+                          <p>Arlester had the honor and pleasure to return to Normandy, France via the Best Defense Foundation (BDF) organization from California. I was accompanied by his caregiver and Executive Assistant, Ms. Elma Williams-Coleman.</p>
+                          <p className="mt-2">The trip there and back was quite an experience and he truly enjoyed it. He flew from Washington, DC to Atlanta, GA via Delta-1 Airline (sponsors) on July 29, 2023. He was also flown with 44 other World War II Veterans. They were greeted by the Delta Airline&apos;s sponsors, host, staff and employees with a kick-off welcome and celebration. Also Michelin Corporation was also a sponsor. The next morning the Veterans and team were flown by Delta Airline once again, first class to Normandy, France. The next day the Veterans were greeted with awesome cheers by many Frenchmen. What a way to bring Veterans back home!!!!! While in France he visited the Omaha Beach, the French and German Cemetery, Catholic Church, City Parade, and nightly welcome celebrations by all branches of the Government. When he walked the grounds of the cemetery and saw all of the markers, the HOLY SPIRIT flashed across his mind and heart he began to leave his mark with singing &quot;Amazing Grace&quot;! The Normandy, France trip really helped him to answer some questions that I had over the years. Normandy, France will be forever in my heart and my service in World War III will never be forgotten. Arlester received the French of Legion Award (one of France&apos;s highest Military Awards) from President Emmanuel Macron during the 80th D-Day Celebration in Normandy, France (June 2024).</p>
+                        </div>
+                        <div className="pt-4 border-t border-gray-200">
+                          <p className="font-semibold">SALUTE! God Almighty was his co-pilot while in the military and during his entire life.</p>
+                          <p className="mt-2 italic">Arlester&apos;s favorite quote is: &quot;I am blessed to be a blessing&quot;.</p>
+                          <p className="mt-4">With love and gratitude,</p>
+                          <p className="font-bold">Rev. Dr. Arlester Brown</p>
+                        </div>
+                        <button
+                          onClick={() => setShowBio(false)}
+                          className="text-steel-blue hover:text-navy active:text-steel-blue/80 font-semibold underline transition-all duration-300 mt-2 min-h-[44px] px-2"
+                        >
+                          Show less
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </SectionWrapper>
@@ -786,14 +808,11 @@ export default function Home() {
                 <span>#CelebrationOfService</span>
                 <span>#HonorLegacy</span>
                 <span>#UniteTheFuture</span>
-                <span>#CoSGoArmy</span>
-                <span>#CoSGoNavy</span>
               </div>
             </div>
             <div className="metallic-divider my-12"></div>
             <div className="text-center text-silver text-sm">
               <p>© 2025 Inclusive Security Collective Initiative (iSCI) LLC.</p>
-              <p className="mt-2">Built by Claire Lindstrom.</p>
             </div>
           </SectionWrapper>
         </div>
