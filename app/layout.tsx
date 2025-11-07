@@ -60,10 +60,10 @@ export const metadata: Metadata = {
     description: 'Leadership in Sports, Wellness & Service Summit & Reception hosted by Inclusive Security Collective Initiative (iSCI) LLC',
     images: [
       {
-        url: '/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Leadership in Sports, Wellness & Service',
+        url: '/Veterans Day  Sports and Service Networking Reception-3.png',
+        width: 1500,
+        height: 2000,
+        alt: 'Leadership in Sports, Wellness & Service Event Invitation',
       },
     ],
     type: 'website',
@@ -72,11 +72,11 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Celebration of Service Summit & Awards Reception | iSCI',
     description: 'Leadership in Sports, Wellness & Service Summit & Reception hosted by Inclusive Security Collective Initiative (iSCI) LLC',
-    images: ['/logo.png'],
+    images: ['/Veterans Day  Sports and Service Networking Reception-3.png'],
   },
   icons: {
-    icon: '/background33.png',
-    apple: '/background33.png',
+    icon: '/Veterans Day  Sports and Service Networking Reception-3.png',
+    apple: '/Veterans Day  Sports and Service Networking Reception-3.png',
   },
 }
 
