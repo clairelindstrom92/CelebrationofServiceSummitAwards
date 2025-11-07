@@ -822,7 +822,7 @@ export default function Home() {
                 <div className="flex-shrink-0">
                   <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl border-4 border-platinum/30">
                     <Image
-                      src="/clara.png"
+                      src="/Clara Headshot.png"
                       alt="Claradith 'Clara' E. Landry"
                       width={224}
                       height={224}
